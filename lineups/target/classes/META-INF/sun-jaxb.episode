@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<bindings xmlns="http://java.sun.com/xml/ns/jaxb" if-exists="true" version="2.1">
+      
+    <!--
+
+Questo file è stato generato dall'architettura JavaTM per XML Binding (JAXB) Reference Implementation, v2.3.0 
+Vedere <a href="https://javaee.github.io/jaxb-v2/">https://javaee.github.io/jaxb-v2/</a> 
+Qualsiasi modifica a questo file andrà persa durante la ricompilazione dello schema di origine. 
+Generato il: 2023.06.28 alle 04:27:01 PM CEST 
+
+  -->
+      
+    <bindings xmlns:tns="http://disim.univaq.it/fantacalcio/lineup/wsdltypes" if-exists="true" scd="x-schema::tns">
+            
+        <schemaBindings map="false">
+                  
+            <package name="it.univaq.disim.fantacalcio.lineup.wsdltypes"/>
+                
+        </schemaBindings>
+            
+        <bindings if-exists="true" scd="tns:GetLineupOfAllTeamsResponse">
+                  
+            <class ref="it.univaq.disim.fantacalcio.lineup.wsdltypes.GetLineupOfAllTeamsResponse"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:Team">
+                  
+            <class ref="it.univaq.disim.fantacalcio.lineup.wsdltypes.Team"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:GetLineupOfAllTeamsRequest">
+                  
+            <class ref="it.univaq.disim.fantacalcio.lineup.wsdltypes.GetLineupOfAllTeamsRequest"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:GetLineupOfSingleTeamResponse">
+                  
+            <class ref="it.univaq.disim.fantacalcio.lineup.wsdltypes.GetLineupOfSingleTeamResponse"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="tns:GetLineupOfSingleTeamRequest">
+                  
+            <class ref="it.univaq.disim.fantacalcio.lineup.wsdltypes.GetLineupOfSingleTeamRequest"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:Player">
+                  
+            <class ref="it.univaq.disim.fantacalcio.lineup.wsdltypes.Player"/>
+                
+        </bindings>
+          
+    </bindings>
+    
+</bindings>

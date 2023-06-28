@@ -1,0 +1,20 @@
+ATALANTA,Musso,Toloi,Demiral,Palomino,Hateboer,De Roon,Koopmeiners,Zappacosta,Lookman,Hojlund,Boga
+BOLOGNA,Skorupski,Posch,Soumaoro,Lucumì,Kyriakopoulos,Medel,Ferguson,Orsolini,Dominguez,Soriano,Arnautovic
+CREMONESE,Carnesecchi,Bianchetti,Chiriches,Vasquez,Sernicola,Benassi,Meitè,Pickel,Valeri,Okereke,Dessers
+EMPOLI,Vicario,Ebuehi,Ismajli,Luperto,Parisi,Haas,Marin,Bandinelli,Baldanzi,Satriano,Caputo
+FIORENTINA,Terracciano,Dodô,Milenković,Igor,Biraghi,Bonaventura,Amrabat,Barák,González,Cabral,Brekalo
+HELLASVERONA,Montipò,Dawidowicz,Hien,Ceccherini,Faraoni,Tameze,Duda,Doig,Ngonge,Lazovic,Djuric
+INTER,Onana,Skriniar,Acerbi,Bastoni,Dumfries,Barella,Brozovic,Calhanoglu,Dimarco,Lautaro,Lukaku
+JUVENTUS,Szczesny,Danilo,Bremer,Bonucci,Cuadrado,Fagioli,Locatelli,Rabiot,Kostic,Vlahovic,Di Maria
+LAZIO,Provedel,Lazzari,Romagnoli,Casale,Marusic,Luis Alberto,Cataldi,M. Savic,F.Anderson,Immobile,Zaccagni
+LECCE,Falcone,Gendrey,Baschirotto,Umtiti,Gallo,Gonzalez,Hjulmand,Maleh,Strefezza,Ceesay,DiFrancesco
+MILAN,Maignan,Calabria,Kalulu,Tomori,Hernandez,Bennacer,Tonali,Messias,Diaz,Leao,Giroud
+MONZA,Di Gregorio,Izzo,Marí,Caldirola,Ciurria,Rovella,Sensi,Carlos Augusto,Pessina,Caprari,Petagna
+NAPOLI,Meret,Di Lorenzo,Rrhamani,Kim,Mario Rui,Anguissa,Lobotka,Zielinski,Lozano,Osimhen,Kvaratskhelia
+ROMA,Rui Patricio,Mancini,Smalling,Ibanez,Celik,Cristante,Wijnaldum,Zalewski,Pellegrini,Dybala,Abraham
+SALERNITANA,Ochoa,Mazzocchi,Troost,Ekong,Fazio,Bradaric,Candreva,Coulibaly,Bohinen,Maggiore,Piatek,Dia
+SAMPDORIA,Audero,Gunter,Nuytinck,Colley,Leris,Winks,Rincon,Augello,Djuricic,Lammers,Gabbiadini
+SASSUOLO,Consigli,Toljan,Erlic,Ferrari,Rogerio,Frattesi,Maxime Lopez,Berardi,Bajrami,Laurienté,Pinamonti
+SPEZIA,Dragowski,Ampadu,Caldara,Nikolau,Holm,Zurkowski,Bourabia,Bastoni,Reca,Shomurodov,Nzola
+TORINO,Milinkovic-Savic,Djidji,Schuurs,Buongiorno,Singo,Ilic,Ricci,Vojvoda,Miranchuk,Vlasic,Sanabria
+UDINESE,Silvestri,Becao,Bijol,Perez,Pereyra,Lovric,Walace,Arslan,Udogie,Beto,Success
