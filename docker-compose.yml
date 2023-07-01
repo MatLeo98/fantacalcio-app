@@ -57,7 +57,7 @@ services:
       - mysql
 
   stats-microservice:
-    build: ./statistics
+    build: ./stats
     ports:
       - "9061:9061"
     environment:
