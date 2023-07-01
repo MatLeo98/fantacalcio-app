@@ -1,0 +1,13 @@
+it\disim\univaq\fantacalcio\endpoints\LineupOfSingleTeam.class
+it\disim\univaq\fantacalcio\endpoints\Player.class
+it\disim\univaq\fantacalcio\endpoints\Lineups.class
+it\disim\univaq\fantacalcio\endpoints\LineupsImplService.class
+it\disim\univaq\fantacalcio\ProsumerOneApplication.class
+it\disim\univaq\fantacalcio\controller\ProsumerController.class
+it\disim\univaq\fantacalcio\endpoints\AllTeamsResponse.class
+it\disim\univaq\fantacalcio\endpoints\Team.class
+it\disim\univaq\fantacalcio\endpoints\Team$Players.class
+it\disim\univaq\fantacalcio\endpoints\package-info.class
+it\disim\univaq\fantacalcio\endpoints\LineupOfAllTeams.class
+it\disim\univaq\fantacalcio\endpoints\SingleTeamResponse.class
+it\disim\univaq\fantacalcio\endpoints\ObjectFactory.class
