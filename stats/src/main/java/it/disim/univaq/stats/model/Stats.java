@@ -18,8 +18,29 @@ public class Stats extends DateAudit{
 	@Column(name = "matches_played", nullable = false, length = 45)
 	private Integer matches_played;
 
+	@Column(name = "fanta_mean", nullable = false, length = 30)
+	private Float fanta_mean;
+
+	@Column(name = "rating_avarage", nullable = false)
+	private Float rating_avarage;
+
 	@Column(name = "goals", nullable = false, length = 45)
 	private Integer goals;
+
+	@Column(name = "goals_conceded")
+	private Integer goals_conceded;
+
+	@Column(name = "penalties_saved")
+	private Integer penalties_saved;
+
+	@Column(name = "penalties_taken")
+	private Integer penalties_taken;
+
+	@Column(name = "penalties_scored")
+	private Integer penalties_scored;
+
+	@Column(name = "penalties_missed")
+	private Integer penalties_missed;
 
 	@Column(name = "assists", nullable = false, length = 32)
 	private Integer assists;
@@ -30,17 +51,11 @@ public class Stats extends DateAudit{
 	@Column(name = "red_cards", nullable = false, length = 15)
 	private Integer red_cards;
 
-	@Column(name = "fanta_mean", nullable = false, length = 30)
-	private Float fanta_mean;
-
-	@Column(name = "rating_avarage", nullable = false)
-	private Float rating_avarage;
+	@Column(name = "autogoals", nullable = false,)
+	private Integer autogoals;
 
 	@Column(name = "clean_sheet")
 	private Integer clean_sheet;
-
-	@Column(name = "goals_conceded")
-	private Integer goals_conceded;
 
 	@Column(name = "playerId", nullable = false)
 	private Long playerId;
