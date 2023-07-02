@@ -5,16 +5,16 @@ import javax.xml.bind.annotation.*;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Player {
 
-    @XmlElement(name = "name")
-    protected String name;
+    @XmlElement(name = "surname")
+    protected String surname;
 
 
-    public String getName() {
-        return name;
+    public String getSurname() {
+        return surname;
     }
 
-    public void setName(String value) {
-        this.name = value;
+    public void setSurname(String value) {
+        this.surname = value;
     }
 
 }

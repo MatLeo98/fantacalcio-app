@@ -37,7 +37,6 @@
 
   <xs:complexType name="Player">
     <xs:sequence>
-      <xs:element minOccurs="0" name="name" type="xs:string"/>
       <xs:element minOccurs="0" name="surname" type="xs:string"/>
     </xs:sequence>
   </xs:complexType>
@@ -107,7 +106,7 @@
   </wsdl:binding>
   <wsdl:service name="LineupsImplService">
     <wsdl:port binding="tns:LineupsImplServiceSoapBinding" name="LineupsImplPort">
-      <soap:address location="http://localhost:8080/AsyncLineupsSOAPService/lineups"/>
+      <soap:address location="http://host.docker.internal:8080/AsyncLineupsSOAPService/lineups"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

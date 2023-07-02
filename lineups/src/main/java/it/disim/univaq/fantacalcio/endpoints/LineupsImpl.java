@@ -45,7 +45,7 @@ public class LineupsImpl implements Lineups {
         if (players != null) {
             players.forEach(p -> {
                 Player player = new Player();
-                player.setName(p);
+                player.setSurname(p);
                 team.getPlayers().add(player);
             });
         } else {
@@ -68,7 +68,7 @@ public class LineupsImpl implements Lineups {
             team.setTeamName(teamName);
             playerNames.forEach(p -> {
                 Player player = new Player();
-                player.setName(p);
+                player.setSurname(p);
                 team.getPlayers().add(player);
             });
             teams.add(team);

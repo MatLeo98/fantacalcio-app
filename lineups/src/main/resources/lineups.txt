@@ -1,20 +1,20 @@
 ATALANTA,Musso,Toloi,Demiral,Palomino,Hateboer,De Roon,Koopmeiners,Zappacosta,Lookman,Hojlund,Boga
-BOLOGNA,Skorupski,Posch,Soumaoro,Lucumì,Kyriakopoulos,Medel,Ferguson,Orsolini,Dominguez,Soriano,Arnautovic
-CREMONESE,Carnesecchi,Bianchetti,Chiriches,Vasquez,Sernicola,Benassi,Meitè,Pickel,Valeri,Okereke,Dessers
+BOLOGNA,Skorupski,Posch,Soumaoro,Lucumi',Kyriakopoulos,Medel,Ferguson,Orsolini,Dominguez,Soriano,Arnautovic
+CREMONESE,Carnesecchi,Bianchetti,Chiriches,Vasquez,Sernicola,Benassi,Meite',Pickel,Valeri,Okereke,Dessers
 EMPOLI,Vicario,Ebuehi,Ismajli,Luperto,Parisi,Haas,Marin,Bandinelli,Baldanzi,Satriano,Caputo
-FIORENTINA,Terracciano,Dodô,Milenković,Igor,Biraghi,Bonaventura,Amrabat,Barák,González,Cabral,Brekalo
-HELLASVERONA,Montipò,Dawidowicz,Hien,Ceccherini,Faraoni,Tameze,Duda,Doig,Ngonge,Lazovic,Djuric
-INTER,Onana,Skriniar,Acerbi,Bastoni,Dumfries,Barella,Brozovic,Calhanoglu,Dimarco,Lautaro,Lukaku
+FIORENTINA,Terracciano,Dodo',Milenković,Igor,Biraghi,Bonaventura,Amrabat,Barak,Gonzalez N.,Cabral,Brekalo
+HELLASVERONA,Montipo',Dawidowicz,Hien,Ceccherini,Faraoni,Tameze,Duda,Doig,Ngonge,Lazovic,Djuric
+INTER,Onana,Skriniar,Acerbi,Bastoni,Dumfries,Barella,Brozovic,Calhanoglu,Dimarco,Martinez L.,Lukaku
 JUVENTUS,Szczesny,Danilo,Bremer,Bonucci,Cuadrado,Fagioli,Locatelli,Rabiot,Kostic,Vlahovic,Di Maria
-LAZIO,Provedel,Lazzari,Romagnoli,Casale,Marusic,Luis Alberto,Cataldi,M. Savic,F.Anderson,Immobile,Zaccagni
-LECCE,Falcone,Gendrey,Baschirotto,Umtiti,Gallo,Gonzalez,Hjulmand,Maleh,Strefezza,Ceesay,DiFrancesco
-MILAN,Maignan,Calabria,Kalulu,Tomori,Hernandez,Bennacer,Tonali,Messias,Diaz,Leao,Giroud
-MONZA,Di Gregorio,Izzo,Marí,Caldirola,Ciurria,Rovella,Sensi,Carlos Augusto,Pessina,Caprari,Petagna
-NAPOLI,Meret,Di Lorenzo,Rrhamani,Kim,Mario Rui,Anguissa,Lobotka,Zielinski,Lozano,Osimhen,Kvaratskhelia
-ROMA,Rui Patricio,Mancini,Smalling,Ibanez,Celik,Cristante,Wijnaldum,Zalewski,Pellegrini,Dybala,Abraham
-SALERNITANA,Ochoa,Mazzocchi,Troost,Ekong,Fazio,Bradaric,Candreva,Coulibaly,Bohinen,Maggiore,Piatek,Dia
-SAMPDORIA,Audero,Gunter,Nuytinck,Colley,Leris,Winks,Rincon,Augello,Djuricic,Lammers,Gabbiadini
-SASSUOLO,Consigli,Toljan,Erlic,Ferrari,Rogerio,Frattesi,Maxime Lopez,Berardi,Bajrami,Laurienté,Pinamonti
-SPEZIA,Dragowski,Ampadu,Caldara,Nikolau,Holm,Zurkowski,Bourabia,Bastoni,Reca,Shomurodov,Nzola
-TORINO,Milinkovic-Savic,Djidji,Schuurs,Buongiorno,Singo,Ilic,Ricci,Vojvoda,Miranchuk,Vlasic,Sanabria
-UDINESE,Silvestri,Becao,Bijol,Perez,Pereyra,Lovric,Walace,Arslan,Udogie,Beto,Success
+LAZIO,Provedel,Lazzari,Romagnoli,Casale,Marusic,Luis Alberto,Cataldi,Milinkovic-Savic,Felipe Anderson,Immobile,Zaccagni
+LECCE,Falcone,Gendrey,Baschirotto,Umtiti,Gallo,Gonzalez J.,Hjulmand,Maleh,Strefezza,Ceesay,Di Francesco F.
+MILAN,Maignan,Calabria,Kalulu,Tomori,Hernandez T.,Bennacer,Tonali,Messias,Diaz B.,Rafael Leao,Giroud
+MONZA,Di Gregorio,Izzo,Mari',Caldirola,Ciurria,Rovella,Sensi,Carlos Augusto,Pessina,Caprari,Petagna
+NAPOLI,Meret,Di Lorenzo,Rrahmani,Kim,Mario Rui,Zambo Anguissa,Lobotka,Zielinski,Lozano,Osimhen,Kvaratskhelia
+ROMA,Rui Patricio,Mancini,Smalling,Ibanez,Celik,Cristante,Wijnaldum,Zalewski,Pellegrini Lo.,Dybala,Abraham
+SALERNITANA,Ochoa,Mazzocchi,Troost-Ekong,Fazio,Bradaric,Candreva,Coulibaly L.,Bohinen,Maggiore,Piatek,Dia
+SAMPDORIA,Audero,Gunter,Nuytinck,Amione,Leris,Winks,Rincon,Augello,Djuricic,Lammers,Gabbiadini
+SASSUOLO,Consigli,Toljan,Erlic,Ferrari G.,Rogerio,Frattesi,Lopez M.,Berardi,Bajrami,Lauriente',Pinamonti
+SPEZIA,Dragowski,Ampadu,Caldara,Nikolaou,Holm,Zurkowski,Bourabia,Bastoni,Reca,Shomurodov,Nzola
+TORINO,Milinkovic-Savic V.,Djidji,Schuurs,Buongiorno,Singo,Ilic,Ricci S.,Vojvoda,Miranchuk,Vlasic,Sanabria
+UDINESE,Silvestri,Rodrigo Becao,Bijol,Perez N.,Pereyra,Lovric,Walace,Arslan,Udogie,Beto,Success
