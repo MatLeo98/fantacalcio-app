@@ -51,7 +51,7 @@ public class Stats extends DateAudit{
 	@Column(name = "red_cards", nullable = false, length = 15)
 	private Integer red_cards;
 
-	@Column(name = "autogoals", nullable = false,)
+	@Column(name = "autogoals", nullable = false)
 	private Integer autogoals;
 
 	@Column(name = "clean_sheet")
@@ -159,4 +159,44 @@ public class Stats extends DateAudit{
 	public void setPlayer(Player player) {
 		this.player = player;
 	}*/
+
+	public Integer getPenalties_saved() {
+		return penalties_saved;
+	}
+
+	public void setPenalties_saved(Integer penalties_saved) {
+		this.penalties_saved = penalties_saved;
+	}
+
+	public Integer getPenalties_taken() {
+		return penalties_taken;
+	}
+
+	public void setPenalties_taken(Integer penalties_taken) {
+		this.penalties_taken = penalties_taken;
+	}
+
+	public Integer getPenalties_scored() {
+		return penalties_scored;
+	}
+
+	public void setPenalties_scored(Integer penalties_scored) {
+		this.penalties_scored = penalties_scored;
+	}
+
+	public Integer getPenalties_missed() {
+		return penalties_missed;
+	}
+
+	public void setPenalties_missed(Integer penalties_missed) {
+		this.penalties_missed = penalties_missed;
+	}
+
+	public Integer getAutogoals() {
+		return autogoals;
+	}
+
+	public void setAutogoals(Integer autogoals) {
+		this.autogoals = autogoals;
+	}
 }
