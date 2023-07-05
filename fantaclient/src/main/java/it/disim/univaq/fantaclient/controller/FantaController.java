@@ -24,7 +24,7 @@ public class FantaController {
     public void sendGetRequest(Model model) {
     	
     	RestTemplate restTemplate = new RestTemplate();
-        String url = "http://fantacalcio-prosumer-1-microservice-1:9070/best-formation";
+        String url = "http://host.docker.internal:9070/best-formation";
         ResponseEntity<DataModel[]> best = restTemplate.getForEntity(url, DataModel[].class);
         
         ArrayList<String> names = new ArrayList<>();
