@@ -1,0 +1,12 @@
+{"properties": [
+  {
+    "name": "campioncini.url",
+    "type": "java.lang.String",
+    "description": "A description for 'campioncini.url'"
+  },
+  {
+    "name": "campioncini.name",
+    "type": "java.lang.String",
+    "description": "A description for 'campioncini.name'"
+  }
+]}
