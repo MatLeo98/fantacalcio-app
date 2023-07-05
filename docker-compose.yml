@@ -98,6 +98,19 @@ services:
       - discovery-server
       - player-microservice
 #      - stats-microservice
+  prosumer-3-microservice:
+    build: ./prosumer-3
+    ports:
+      - "9072:9072"
+    environment:
+      CONFIG_SERVER_HOST: config-server
+      CONFIG_SERVER_PORT: 8888
+      EUREKA_SERVER: http://discovery-server:8761/eureka/
+    depends_on:
+      - config-server
+      - discovery-server
+      - player-microservice
+  #      - stats-microservice
   fantaclient:
     build: ./fantaclient
     ports:

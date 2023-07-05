@@ -1,2 +1,5 @@
 target/*
 .idea
+config-server/target/classes/META-INF/maven/it.disim.univaq.sose.examples.openjob/config-server/pom.properties
+discovery-server/target/classes/META-INF/maven/it.disim.univaq.sose.examples.openjob/discovery-server/pom.properties
+gateway/target/classes/META-INF/maven/it.disim.univaq.sose.examples.openjob/gateway/pom.properties
