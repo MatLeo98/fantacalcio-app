@@ -26,13 +26,12 @@
                   </div>
                </div>
                   <div class="col-md-12 text_align_center">
-					 <p><h2>This is the current best formation:</h2></p>
+					 <p><h2 th:text="${'This is the current best formation for module ' + modulo + ':'}"></h2></p>
+					    
 					    <p>
 							<table style="margin-left: auto; margin-right: auto;">
 					        <tr th:each="element : ${response}">
-					            <td th:text="${element}">
-                                   <img th:src="http://fantacalcio-app-prosumer-2-microservice-1/campioncini/${element}"/>
-                                </td>
+                             <td><img width="50%" alt="campioncino" th:src="@{${'http://host.docker.internal:9071/campioncini/' + element.getSurname()}}"/></td>
 					        </tr>
 					    	</table>
 					    </p>
