@@ -61,25 +61,7 @@
                               <div class="striker3" th:each="element : ${strikers}"><img th:src="@{${'http://localhost:9071/campioncini/' + element.getSurname()}}" alt="Attaccante" class="img-campioncini"></div>
                            </div>
                   </div>
-                     <!--<td th:if="${element.role == 'C'}"><img width="50%" alt="campioncino" th:src="@{${'http://localhost:9071/campioncini/' + element.getSurname()}}"/></td>-->
 					    </p>
-                     <!--<div class="field">
-                        Portiere
-                        <div class="goalkeeper"><img src="campioncini/portiere.png" alt="Portiere"></div>
-                        <!-- Difensori
-                        <div class="defender"><img src="campioncini/difensore.png" alt="Difensore"></div>
-                        <div class="defender"><img src="campioncini/difensore.png" alt="Difensore"></div>
-                        <div class="defender"><img src="campioncini/difensore.png" alt="Difensore"></div>
-                        <div class="defender"><img src="campioncini/difensore.png" alt="Difensore"></div>
-                        <!-- Centrocampisti
-                        <div class="midfielder"><img src="campioncini/centrocampista.png" alt="Centrocampista"></div>
-                        <div class="midfielder"><img src="campioncini/centrocampista.png" alt="Centrocampista"></div>
-                        <div class="midfielder"><img src="campioncini/centrocampista.png" alt="Centrocampista"></div>
-                        <!-- Attaccanti
-                        <div class="striker"><img src="campioncini/attaccante.png" alt="Attaccante"></div>
-                        <div class="striker"><img src="campioncini/attaccante.png" alt="Attaccante"></div>
-                        <div class="striker"><img src="campioncini/attaccante.png" alt="Attaccante"></div>
-                     </div>-->
 					    <p><a class="read_more" th:href="@{/}">Go back to the home</a></p></p>
                   </div>
                </div>

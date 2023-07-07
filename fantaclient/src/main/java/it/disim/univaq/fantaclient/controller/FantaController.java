@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import it.disim.univaq.fantaclient.feignclient.FantaFeignClient;
 import it.disim.univaq.fantaclient.model.DataModel;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/")
@@ -26,8 +27,8 @@ public class FantaController {
     }
 	
 	@GetMapping("/best-formation")
-	public void getBestFormation(Model model) {
-		List<DataModel> best = fantafeignclient.getBestFormation();
+	public void getBestFormation(@RequestParam("formationDesired") String formationDesired, Model model) {
+		List<DataModel> best = fantafeignclient.getBestFormation(formationDesired);
 		List<DataModel> goalkeeper = new ArrayList<>();
 		List<DataModel> defenders = new ArrayList<>();
 		List<DataModel> midfielders = new ArrayList<>();

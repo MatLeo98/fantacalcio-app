@@ -1,74 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <!-- basic -->
-      <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <!-- bootstrap css -->
-      <link rel="stylesheet" href="css/bootstrap.min.css">
-      <!-- style css -->
-      <link rel="stylesheet" href="css/style.css">
-      <!-- responsive-->
-      <link rel="stylesheet" href="css/responsive.css">
-      <!-- awesome fontfamily -->
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-   </head>
-   
-   <body class="main-layout">
-     
-      <div class="our_club">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-10 offset-md-1">
-                  <div class="titlepage text_align_center">
-                     <h2>FantaUnivaq</h2>
-                     <p th:text="${message}"></p>
-                  </div>
-               </div>
-               <div class="col-md-12">
-                  <div class="club_btn">
-					 <a class="read_more" th:href="@{/best-formation}">Best formation</a>
-                     <a class="read_more" href="Javascript:void(0)">Map</a>
-                     <a class="read_more" href="Javascript:void(0)">Join now</a>
-                  </div>
+<head>
+   <!-- basic -->
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <!-- bootstrap css -->
+   <link rel="stylesheet" href="css/bootstrap.min.css">
+   <!-- style css -->
+   <link rel="stylesheet" href="css/style.css">
+   <!-- responsive-->
+   <link rel="stylesheet" href="css/responsive.css">
+   <!-- awesome fontfamily -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <script>
+      $(document).ready(function() {
+         // Gestisci l'evento di cambio selezione nel dropdown menu
+         $('#moduloSelect').change(function() {
+            var selectedModulo = $(this).val();
+            var url = '/best-formation?formationDesired=' + selectedModulo;
+
+            // Aggiorna l'attributo href del link con l'URL generato
+            $('.read_more').attr('href', url);
+         });
+      });
+   </script>
+</head>
+
+<body class="main-layout">
+
+<div class="our_club">
+   <div class="container">
+      <div class="row">
+         <div class="col-md-10 offset-md-1">
+            <div class="titlepage text_align_center">
+               <h2>FantaUnivaq</h2>
+               <p th:text="${message}"></p>
+            </div>
+         </div>
+
+         <div class="col-md-12">
+            <div class="club_btn">
+               <select id="moduloSelect">
+                  <option value="4-3-3">4-3-3</option>
+                  <option value="4-4-2">4-4-2</option>
+                  <option value="3-5-2">3-5-2</option>
+                  <option value="3-4-3">3-4-3</option>
+                  <option value="5-3-2">5-3-2</option>
+               </select>
+               <a class="read_more" th:href="@{/best-formation}">Best formation</a>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+<footer>
+   <div class="footer">
+      <div class="container">
+         <div class="row">
+            <div class="col-md-8 offset-md-2">
+               <h3>Follow Us</h3>
+               <ul class="social_icon text_align_center">
+                  <li> <a href="Javascript:void(0)"><i class="fa fa-facebook-f"></i></a></li>
+                  <li> <a href="Javascript:void(0)"><i class="fa fa-twitter"></i></a></li>
+                  <li> <a href="Javascript:void(0)"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                  <li> <a href="Javascript:void(0)"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                  <li> <a href="Javascript:void(0)"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+               </ul>
+               <div class="conta text_align_center">
+                  <ul>
+                     <li> <a href="Javascript:void(0)"><img src="images/call.png" alt="#"/> Call +01 1234567890</a></li>
+                     <li> <a href="Javascript:void(0)"><img src="images/mall.png" alt="#"/> demo@gmail.com</a></li>
+                  </ul>
                </div>
             </div>
          </div>
       </div>
-
-      <footer>
-         <div class="footer">
-            <div class="container">
-               <div class="row">
-                  <div class="col-md-8 offset-md-2">
-                     <h3>Follow Us</h3>
-                     <ul class="social_icon text_align_center">
-                        <li> <a href="Javascript:void(0)"><i class="fa fa-facebook-f"></i></a></li>
-                        <li> <a href="Javascript:void(0)"><i class="fa fa-twitter"></i></a></li>
-                        <li> <a href="Javascript:void(0)"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                        <li> <a href="Javascript:void(0)"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                        <li> <a href="Javascript:void(0)"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
-                     </ul>
-                     <div class="conta text_align_center">
-                        <ul>
-                           <li> <a href="Javascript:void(0)"><img src="images/call.png" alt="#"/> Call +01 1234567890</a></li>
-                           <li> <a href="Javascript:void(0)"><img src="images/mall.png" alt="#"/> demo@gmail.com</a></li>
-                        </ul>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div class="copyright text_align_center">
-               <div class="container">
-                  <div class="row">
-                     <div class="col-md-8 offset-md-2">
-                        <p>© 2023 All Rights Reserved.</p>
-                     </div>
-                  </div>
+      <div class="copyright text_align_center">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-8 offset-md-2">
+                  <p>© 2023 All Rights Reserved.</p>
                </div>
             </div>
          </div>
-      </footer>
-
-   </body>
+      </div>
+   </div>
+</footer>
+</body>
 </html>
