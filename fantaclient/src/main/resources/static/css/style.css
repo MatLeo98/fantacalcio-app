@@ -453,6 +453,7 @@ ul.email li a {
      font-weight: bold;
      border-radius: 50px;
      transition: ease-in all 0.5s;
+     margin-top: 40px;
 }
 
 .read_more:hover {
@@ -845,6 +846,107 @@ ul.social_icon li a:hover {
 #request *::placeholder {
      color: #828181;
      opacity: 1;
+}
+
+
+/*FORMAZIONE*/
+/*portiere*/
+.grid1 {
+     display: grid;
+     grid-template-columns: repeat(11, 1fr);
+     grid-gap: 10px;
+     margin: 0 auto;
+     max-width: 800px;
+     justify-items: center;
+}
+/*4 giocatori per riga*/
+.grid4 {
+     display: grid;
+     grid-template-columns: repeat(4, 1fr);
+     grid-gap: 10px;
+     margin: 0 auto;
+     max-width: 400px;
+     justify-items: center;
+}
+
+/*5 giocatori per riga*/
+.grid5 {
+     display: grid;
+     grid-template-columns: repeat(5, 1fr);
+     grid-gap: 10px;
+     margin: 0 auto;
+     max-width: 400px;
+     justify-items: center;
+}
+
+/*2-3 giocatori per riga*/
+.grid2-3 {
+     display: grid;
+     grid-template-columns: repeat(12, 1fr);
+     grid-gap: 10px;
+     margin: 0 auto;
+     max-width: 400px;
+     justify-items: center;
+     align-items: center;
+}
+
+.img-campioncini {
+     max-width: 100%;
+     height: auto;
+     width: 63px;
+}
+
+.goalkeeper {
+     grid-column: 6;
+     grid-row: 1;
+}
+/*4-5 giocatori per riga*/
+.defender4-5 {
+     grid-column: span 1;
+     grid-row: 2;
+}
+
+/*3 giocatori per riga*/
+.defender3 {
+     grid-column: span 4;
+     grid-row: 2;
+}
+
+/*3 giocatori per riga*/
+.midfielder3 {
+     grid-column: span 4;
+     grid-row: 3;
+}
+
+/*4-5 giocatori per riga*/
+.midfielder4-5 {
+     grid-column: span 1;
+     grid-row: 3;
+}
+
+/*3 giocatori per riga*/
+.striker3 {
+     grid-column: span 4;
+     grid-row: 4;
+}
+
+/*2 giocatori per riga*/
+.striker2 {
+     grid-column: span 6;
+     grid-row: 4;
+}
+
+/*1 giocatore per riga*/
+.striker1 {
+     grid-column: 6;
+     grid-row: 4;
+}
+
+.sfondo {
+     background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Football_field.jpg/1200px-Football_field.jpg);
+     background-size: cover;
+     background-position: center;
+     margin-top: 40px;
 }
 
 

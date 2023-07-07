@@ -1,5 +1,6 @@
 package it.disim.univaq.fantaclient.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,20 +28,44 @@ public class FantaController {
 	@GetMapping("/best-formation")
 	public void getBestFormation(Model model) {
 		List<DataModel> best = fantafeignclient.getBestFormation();
+		List<DataModel> goalkeeper = new ArrayList<>();
+		List<DataModel> defenders = new ArrayList<>();
+		List<DataModel> midfielders = new ArrayList<>();
+		List<DataModel> strikers = new ArrayList<>();
 		  var modulo = "";
 		  var dif = 0;
 		  var cen = 0;
 		  var att = 0;
 	      for(var giocatore:best) {
-	    	  switch(giocatore.getRole()) {
-		    	  case "D" -> dif += 1;
-		    	  case "C" -> cen += 1;
-		    	  case "A" -> att += 1;
-	    	  }
+	    	  switch (giocatore.getRole()) {
+                  case "P":
+                      goalkeeper.add(giocatore);
+                      break;
+                  case "D":
+                      defenders.add(giocatore);
+                      dif += 1;
+                      break;
+                  case "C":
+                      midfielders.add(giocatore);
+                      cen += 1;
+                      break;
+                  case "A":
+                      strikers.add(giocatore);
+                      att += 1;
+                      break;
+              }
+
 	      }
 	      modulo = "" + dif + "-" + cen + "-" + att;	 
 	      model.addAttribute("modulo", modulo);
 	      model.addAttribute("response", best);
+	      model.addAttribute("goalkeeper", goalkeeper);
+	      model.addAttribute("defenders", defenders);
+	      model.addAttribute("midfielders", midfielders);
+	      model.addAttribute("strikers", strikers);
+	      model.addAttribute("nDif", dif);
+	      model.addAttribute("nCen", cen);
+	      model.addAttribute("nAtt", att);
 	}
 	
 }
