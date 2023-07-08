@@ -168,7 +168,7 @@ public class ProsumerController {
         }));
 		
         Map<String, List<Player>> playerMap = sortedPlayers.stream()
-		        .filter(player -> player.nationality().toLowerCase().equals(nationality))
+		        .filter(player -> player.nationality().toLowerCase().equals(nationality.toLowerCase()))
 		        .collect(Collectors.groupingBy(Player::role));
         
 		playerMap.getOrDefault("P", new ArrayList<>()).stream()
