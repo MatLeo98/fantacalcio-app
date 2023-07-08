@@ -27,8 +27,24 @@ public class FantaController {
     }
 	
 	@GetMapping("/best-formation")
-	public void getBestFormation(@RequestParam("formationDesired") String formationDesired, Model model) {
-		List<DataModel> best = fantafeignclient.getBestFormation(formationDesired);
+	public void getBestFormation(@RequestParam("formationDesired") String formationDesired,
+								 @RequestParam(required = false) String nationality,
+								 @RequestParam(required = false) String age,
+								 @RequestParam(required = false) String criteria,
+								 Model model) {
+		List<DataModel> best = new ArrayList<>();
+		if(criteria != null && !criteria.isEmpty()){
+			switch(criteria) {
+				case "rating" -> best = fantafeignclient.getBestFormationByFantaMean(formationDesired);
+				case "matchesPlayed" -> best = fantafeignclient.getBestFormationByMatchesPlayed(formationDesired);
+			}
+		} else if (nationality != null && !nationality.isEmpty()) {
+			best = fantafeignclient.getBestFormationByNationality(formationDesired, nationality);
+		} else if (age != null && !age.isEmpty()) {
+			best = fantafeignclient.getBestFormationByAge(formationDesired, age);
+		} else {
+		    best = fantafeignclient.getBestFormation(formationDesired);
+		}
 		List<DataModel> goalkeeper = new ArrayList<>();
 		List<DataModel> defenders = new ArrayList<>();
 		List<DataModel> midfielders = new ArrayList<>();
