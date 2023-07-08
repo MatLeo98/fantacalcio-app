@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import it.disim.univaq.fantaclient.model.DataModel;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient(name ="prosumer-1-microservice")
+@FeignClient(name ="api-gateway")
 public interface FantaFeignClient {
-	@GetMapping("/best-formation")
+	@GetMapping("/api/best-formation")
 	public List<DataModel> getBestFormation(@RequestParam("formationDesired") String formationDesired);
 }
