@@ -18,11 +18,54 @@
          // Gestisci l'evento di cambio selezione nel dropdown menu
          $('#moduloSelect').change(function() {
             var selectedModulo = $(this).val();
-            var url = '/best-formation?formationDesired=' + selectedModulo;
-
-            // Aggiorna l'attributo href del link con l'URL generato
-            $('.read_more').attr('href', url);
+            if(selectedModulo !== "") {
+               $('.read_more').removeClass('disable-button');
+               var url = '/best-formation?formationDesired=' + selectedModulo;
+               $('.read_more').attr('href', url);
+            } else {
+               $('.read_more').addClass('disable-button');
+            }
          });
+
+         $('#criteria').change(function() {
+            var criteria = $(this).val();
+            var selectedModulo = $('#moduloSelect').val();
+            $('#nationality').addClass('invisible');
+            $('#age').addClass('invisible');
+            if(criteria !== "") {
+               if(criteria == "rating") {
+                  var url = '/best-formation?formationDesired=' + selectedModulo + '&criteria=rating';
+               } else if(criteria == "matchesPlayed") {
+                  var url = '/best-formation?formationDesired=' + selectedModulo + '&criteria=matchesPlayed';
+               } else if(criteria == "nation") {
+                  $('#nationality').removeClass('invisible');
+               } else if(criteria == "age") {
+                  $('#age').removeClass('invisible');
+               }
+               $('.read_more').attr('href', url);
+            } else {
+               $('.read_more').addClass('disable-button');
+            }
+         });
+
+         $('#nationality').change(function() {
+            var selectedModulo = $('#moduloSelect').val();
+            var nationality = $(this).val();
+            if(nationality !== "") {
+               var url = '/best-formation?formationDesired=' + selectedModulo + '&nationality=' + nationality;
+               $('.read_more').attr('href', url);
+            }
+         });
+
+         $('#age').change(function() {
+            var selectedModulo = $('#moduloSelect').val();
+            var age = $(this).val();
+            if(age !== "") {
+               var url = '/best-formation?formationDesired=' + selectedModulo + '&age=' + age;
+               $('.read_more').attr('href', url);
+            }
+         });
+
       });
    </script>
 </head>
@@ -42,6 +85,7 @@
          <div class="col-md-12">
             <div class="club_btn">
                <select id="moduloSelect">
+                  <option value="">Choose Module</option>
                   <option value="4-3-3">4-3-3</option>
                   <option value="4-4-2">4-4-2</option>
                   <option value="3-5-2">3-5-2</option>
@@ -50,7 +94,30 @@
                   <option value="5-4-1">5-4-1</option>
                   <option value="4-5-1">4-5-1</option>
                </select>
-               <a class="read_more" th:href="@{/best-formation}">Best formation</a>
+               <select id="criteria">
+                  <option value="">Add Criteria</option>
+                  <option value="rating">Fanta Mean</option>
+                  <option value="nation">Nationality</option>
+                  <option value="matchesPlayed">Matches Played</option>
+                  <option value="age">Age</option>
+               </select>
+               <select id="nationality" class="invisible">
+                  <option value="">Choose Nationality</option>
+                  <option value="Italy">Italy</option>
+                  <option value="France">France</option>
+                  <option value="Portugal">Portugal</option>
+                  <option value="Spain">Spain</option>
+               </select>
+               <select id="age" class="invisible">
+                  <option value="">Choose Age</option>
+                  <option value="minAge">Min Age</option>
+                  <option value="maxAge">Max Age</option>
+                  <option value="u21">Under 21</option>
+                  <option value="u23">Under 23</option>
+               </select>
+            </div>
+            <div class="club_btn">
+               <a class="read_more disable-button" th:href="@{/best-formation}" th:disabled="true">Best formation</a>
             </div>
          </div>
       </div>

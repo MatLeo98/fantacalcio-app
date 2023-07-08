@@ -12,4 +12,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface FantaFeignClient {
 	@GetMapping("/api/best-formation")
 	public List<DataModel> getBestFormation(@RequestParam("formationDesired") String formationDesired);
+
+	@GetMapping("/api/formation/rating")
+    public List<DataModel> getBestFormationByFantaMean(@RequestParam("formationDesired") String formationDesired);
+
+    @GetMapping("/api/formation/matchesPlayed")
+    public List<DataModel> getBestFormationByMatchesPlayed(@RequestParam("formationDesired") String formationDesired);
+
+    @GetMapping("/api/formation/nation")
+    public List<DataModel> getBestFormationByNationality(@RequestParam("formationDesired") String formationDesired, @RequestParam("nationality") String nationality);
+
+    @GetMapping("/api/formation/age")
+    public List<DataModel> getBestFormationByAge(@RequestParam("formationDesired") String formationDesired, @RequestParam("age") String age);
 }
