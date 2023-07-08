@@ -2,9 +2,12 @@ package it.disim.univaq.fantacalcio.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
+import it.disim.univaq.fantacalcio.feignclient.PlayerMicroserviceFeignClient;
+import it.disim.univaq.fantacalcio.feignclient.StatsMicroserviceFeignClient;
 import it.disim.univaq.fantacalcio.model.Player;
 import it.disim.univaq.fantacalcio.model.Stats;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +25,12 @@ public class ProsumerController {
 	@Value("${server.port}")
 	private String portNumber;
 	
+	@Autowired
+	private PlayerMicroserviceFeignClient playerMicroserviceFeignClient;
+	
+	@Autowired
+	private StatsMicroserviceFeignClient statsMicroserviceFeignClient;
+	
 	@GetMapping("/rating")
 	@Operation(summary = "Get the best formation by rating")
 	public List<Player> getFormationByRating(@Parameter(description = "the desired fomration") String formationDesired){
@@ -34,10 +43,11 @@ public class ProsumerController {
 		int formation[] = Arrays.stream(formationDesired.split("-")).mapToInt(Integer::parseInt).toArray();
 		List<Player> bestFormation = new ArrayList<Player>();
 		
+				
+		// Retrieve the list of all players in the lineups from the player REST microservice
+		List<Player> players = playerMicroserviceFeignClient.getPlayers();
 		
-		List<Player> players = players();
-		
-		List<Stats> stats = stats();
+		List<Stats> stats = statsMicroserviceFeignClient.getStats();
 		
 		
         Collections.sort(stats, Comparator.comparing(Stats::rating_avarage).reversed());
@@ -88,9 +98,9 @@ public class ProsumerController {
 		List<Player> bestFormation = new ArrayList<Player>();
 		
 		
-		List<Player> players = players();
+		List<Player> players = playerMicroserviceFeignClient.getPlayers();
 		
-		List<Stats> stats = stats();
+		List<Stats> stats = statsMicroserviceFeignClient.getStats();
 		
 		
         Collections.sort(stats, Comparator.comparing(Stats::matches_played).reversed());
@@ -141,9 +151,9 @@ public class ProsumerController {
 		List<Player> bestFormation = new ArrayList<Player>();
 		
 		
-		List<Player> players = players();
+		List<Player> players = playerMicroserviceFeignClient.getPlayers();
 		
-		List<Stats> stats = stats();
+		List<Stats> stats = statsMicroserviceFeignClient.getStats();
 		
 		
         Collections.sort(stats, Comparator.comparing(Stats::rating_avarage).reversed());
@@ -201,9 +211,9 @@ public class ProsumerController {
 		List<Player> bestFormation = new ArrayList<Player>();
 		
 		
-		List<Player> players = players();
+		List<Player> players = playerMicroserviceFeignClient.getPlayers();
 		
-		List<Stats> stats = stats();
+		List<Stats> stats = statsMicroserviceFeignClient.getStats();
 		
 		
         Collections.sort(stats, Comparator.comparing(Stats::rating_avarage).reversed());
@@ -287,22 +297,6 @@ public class ProsumerController {
 		return bestFormation;
 		
 	}
-	
-	
-	//retrive all the stats
-	private List<Stats> stats() {
-		RestTemplate restTemplate = new RestTemplate();
-        Stats[] statsArray = restTemplate.getForObject("http://host.docker.internal:9061/stats", Stats[].class);
-        return Arrays.asList(statsArray);
-    }	
-	
-	//retrive all players
-	private List<Player> players() {
-		RestTemplate restTemplate = new RestTemplate();
-        Player[] playersArray = restTemplate.getForObject("http://host.docker.internal:9060/player", Player[].class);
-        return Arrays.asList(playersArray);
-    }
-	
 	
     
 }
