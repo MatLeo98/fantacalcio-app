@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
 
 import java.util.*;
@@ -50,7 +49,7 @@ public class ProsumerController {
 		List<Stats> stats = statsMicroserviceFeignClient.getStats();
 		
 		
-        Collections.sort(stats, Comparator.comparing(Stats::rating_avarage).reversed());
+        Collections.sort(stats, Comparator.comparing(Stats::fanta_mean).reversed());
 
         List<Player> sortedPlayers = new ArrayList<>(players);
         Collections.sort(sortedPlayers, Comparator.comparingLong(item -> {
@@ -66,8 +65,8 @@ public class ProsumerController {
 		        .collect(Collectors.groupingBy(Player::role));
         
 		playerMap.getOrDefault("P", new ArrayList<>()).stream()
-		.findFirst()
-		.ifPresent(bestFormation::add);
+				.findFirst()
+				.ifPresent(bestFormation::add);
 
 		playerMap.getOrDefault("D", new ArrayList<>()).stream()
 				.limit(formation[0])
@@ -119,8 +118,8 @@ public class ProsumerController {
 		        .collect(Collectors.groupingBy(Player::role));
         
 		playerMap.getOrDefault("P", new ArrayList<>()).stream()
-		.findFirst()
-		.ifPresent(bestFormation::add);
+				.findFirst()
+				.ifPresent(bestFormation::add);
 
 		playerMap.getOrDefault("D", new ArrayList<>()).stream()
 				.limit(formation[0])
@@ -156,7 +155,7 @@ public class ProsumerController {
 		List<Stats> stats = statsMicroserviceFeignClient.getStats();
 		
 		
-        Collections.sort(stats, Comparator.comparing(Stats::rating_avarage).reversed());
+        Collections.sort(stats, Comparator.comparing(Stats::fanta_mean).reversed());
 
         List<Player> sortedPlayers = new ArrayList<>(players);
         Collections.sort(sortedPlayers, Comparator.comparingLong(item -> {
@@ -173,8 +172,8 @@ public class ProsumerController {
 		        .collect(Collectors.groupingBy(Player::role));
         
 		playerMap.getOrDefault("P", new ArrayList<>()).stream()
-		.findFirst()
-		.ifPresent(bestFormation::add);
+				.findFirst()
+				.ifPresent(bestFormation::add);
 
 		playerMap.getOrDefault("D", new ArrayList<>()).stream()
 				.limit(formation[0])
@@ -216,7 +215,7 @@ public class ProsumerController {
 		List<Stats> stats = statsMicroserviceFeignClient.getStats();
 		
 		
-        Collections.sort(stats, Comparator.comparing(Stats::rating_avarage).reversed());
+        Collections.sort(stats, Comparator.comparing(Stats::fanta_mean).reversed());
 
         List<Player> sortedPlayers = new ArrayList<>(players);
         Collections.sort(sortedPlayers, Comparator.comparingLong(item -> {
