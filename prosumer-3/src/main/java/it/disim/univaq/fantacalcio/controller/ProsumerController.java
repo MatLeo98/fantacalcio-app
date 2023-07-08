@@ -202,7 +202,7 @@ public class ProsumerController {
 		}
 		
 		var availableFeatures = List.of("minage", "maxage", "u21", "u23");
-		if (age == null || !availableFeatures.contains(age)) {
+		if (age == null || !availableFeatures.contains(age.toLowerCase())) {
 			age = "minage";
 		}
 		
@@ -230,7 +230,7 @@ public class ProsumerController {
         Map<String, List<Player>> playerMap = new HashMap<>();
         int limitAge;
         
-        if (age.equals("u21")||age.equals("u23")) {
+        if (age.toLowerCase().equals("u21")||age.toLowerCase().equals("u23")) {
         	limitAge = Integer.parseInt(age.substring(1));
         
         	playerMap = sortedPlayers.stream()
@@ -253,7 +253,11 @@ public class ProsumerController {
 				.limit(formation[2])
 				.forEach(bestFormation::add);
         	
-        }else if(age.equals("minage")) {
+        }else if(age.toLowerCase().equals("minage")) {
+        	
+        	playerMap = sortedPlayers.stream()
+    		        .collect(Collectors.groupingBy(Player::role));
+        	
 			playerMap.getOrDefault("P", new ArrayList<>()).stream()
 				.min(Comparator.comparing(Player::age))
 				.ifPresent(bestFormation::add);
@@ -273,9 +277,13 @@ public class ProsumerController {
 				.limit(formation[2])
 				.forEach(bestFormation::add);
 		}else {
+        	
+        	playerMap = sortedPlayers.stream()
+    		        .collect(Collectors.groupingBy(Player::role));
+
 			playerMap.getOrDefault("P", new ArrayList<>()).stream()
-				.max(Comparator.comparing(Player::age))
-				.ifPresent(bestFormation::add);
+					.max(Comparator.comparing(Player::age))
+					.ifPresent(bestFormation::add);
 
 			playerMap.getOrDefault("D", new ArrayList<>()).stream()
 					.sorted(Comparator.comparing(Player::age).reversed())
