@@ -1,22 +1,32 @@
 package it.disim.univaq.fantacalcio.endpoints;
 
-import it.disim.univaq.fantacalcio.model.Team;
 
+import java.util.concurrent.Future;
+
+import it.disim.univaq.fantacalcio.model.LineupOfAllTeamsResponse;
+import it.disim.univaq.fantacalcio.model.LineupOfSingleTeamsResponse;
 import javax.jws.WebMethod;
-import javax.jws.WebParam;
 import javax.jws.WebService;
+import javax.xml.ws.AsyncHandler;
 import javax.xml.ws.ResponseWrapper;
-import java.util.List;
+
 
 @WebService
 public interface Lineups {
 
     @WebMethod
-    @ResponseWrapper(localName = "SingleTeamResponse")
-    public Team lineupOfSingleTeam(@WebParam(name = "teamName") String teamName);
+    @ResponseWrapper(localName = "lineupOfSingleTeamsResponse", targetNamespace = "http://it.univaq.disim.fantacalcio/lineups", className = "it.disim.univaq.fantacalcio.model.LineupOfSingleTeamsResponse")
+    public LineupOfSingleTeamsResponse lineupOfSingleTeam(String teamName);
 
     @WebMethod
-    @ResponseWrapper(localName = "AllTeamsResponse")
-    public List<Team> lineupOfAllTeams();
+    @ResponseWrapper(localName = "lineupOfAllTeamsResponse", targetNamespace = "http://it.univaq.disim.fantacalcio/lineups", className = "it.disim.univaq.fantacalcio.model.LineupOfAllTeamsResponse")
+    public LineupOfAllTeamsResponse lineupOfAllTeams();
+    
+    @WebMethod
+    @ResponseWrapper(localName = "lineupOfSingleTeamsResponse", targetNamespace = "http://it.univaq.disim.fantacalcio/lineups", className = "it.disim.univaq.fantacalcio.model.LineupOfSingleTeamsResponse")
+    public Future<?> lineupOfSingleTeamAsync(String teamName, AsyncHandler<LineupOfSingleTeamsResponse> asyncHandler);
 
+    @WebMethod
+    @ResponseWrapper(localName = "lineupOfAllTeamsResponse", targetNamespace = "http://it.univaq.disim.fantacalcio/lineups", className = "it.disim.univaq.fantacalcio.model.LineupOfAllTeamsResponse")
+    public Future<?> lineupOfAllTeamsAsync(AsyncHandler<LineupOfAllTeamsResponse> asyncHandler);
 }

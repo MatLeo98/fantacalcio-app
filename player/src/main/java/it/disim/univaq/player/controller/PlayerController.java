@@ -31,7 +31,7 @@ public class PlayerController {
 	@GetMapping
 	public ResponseEntity<List<Player>> getAllPlayers() {
 		System.out.println(portNumber);
-		return new ResponseEntity<List<Player>>(playerService.findAll(), HttpStatus.OK);
+		return new ResponseEntity<>(playerService.findAll(), HttpStatus.OK);
 	}
 
 	@GetMapping("/id/{id}")

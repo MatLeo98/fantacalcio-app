@@ -9,9 +9,9 @@ import org.apache.cxf.BusFactory;
 import org.apache.cxf.transport.servlet.CXFNonSpringServlet;
 
 public class SimpleCXFNonSpringServlet extends CXFNonSpringServlet{
-    private static final long serialVersionUID = 5976105248644843342L;
+	private static final long serialVersionUID = -7603696220018468749L;
 
-    @Override
+	@Override
     public void loadBus(ServletConfig servletConfig) {
         super.loadBus(servletConfig);
         Bus bus = getBus();

@@ -10,8 +10,7 @@ import java.util.List;
 public class Team {
     @XmlElement(name = "teamName")
     protected String teamName;
-    @XmlElementWrapper(name = "players")
-    @XmlElement(name = "player")
+    @XmlElement(name = "players")
     protected List<Player> players;
 
     public String getTeamName() {

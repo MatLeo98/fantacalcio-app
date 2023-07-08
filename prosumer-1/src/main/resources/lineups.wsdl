@@ -1,10 +1,6 @@
-<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://endpoints.fantacalcio.univaq.disim.it/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="LineupsImplService" targetNamespace="http://endpoints.fantacalcio.univaq.disim.it/">
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://endpoints.fantacalcio.univaq.disim.it/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:ns1="http://it.univaq.disim.fantacalcio/lineups" name="LineupsImplService" targetNamespace="http://endpoints.fantacalcio.univaq.disim.it/">
   <wsdl:types>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://endpoints.fantacalcio.univaq.disim.it/" elementFormDefault="unqualified" targetNamespace="http://endpoints.fantacalcio.univaq.disim.it/" version="1.0">
-
-  <xs:element name="AllTeamsResponse" type="tns:AllTeamsResponse"/>
-
-  <xs:element name="SingleTeamResponse" type="tns:SingleTeamResponse"/>
 
   <xs:element name="lineupOfAllTeams" type="tns:lineupOfAllTeams"/>
 
@@ -12,26 +8,20 @@
 
   <xs:complexType name="lineupOfSingleTeam">
     <xs:sequence>
-      <xs:element minOccurs="0" name="teamName" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="SingleTeamResponse">
+  <xs:complexType name="lineupOfSingleTeamsResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:Team"/>
+      <xs:element minOccurs="0" name="team" type="tns:Team"/>
     </xs:sequence>
   </xs:complexType>
 
   <xs:complexType name="Team">
     <xs:sequence>
       <xs:element minOccurs="0" name="teamName" type="xs:string"/>
-      <xs:element minOccurs="0" name="players">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="player" type="tns:Player"/>
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="players" type="tns:Player"/>
     </xs:sequence>
   </xs:complexType>
 
@@ -45,16 +35,20 @@
     <xs:sequence/>
   </xs:complexType>
 
-  <xs:complexType name="AllTeamsResponse">
+  <xs:complexType name="lineupOfAllTeamsResponse">
     <xs:sequence>
-      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:Team"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="teams" nillable="true" type="tns:Team"/>
     </xs:sequence>
   </xs:complexType>
 
 </xs:schema>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://it.univaq.disim.fantacalcio/lineups" xmlns:ns0="http://endpoints.fantacalcio.univaq.disim.it/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://it.univaq.disim.fantacalcio/lineups">
+  <xsd:element name="lineupOfSingleTeamsResponse" nillable="true" type="ns0:lineupOfSingleTeamsResponse"/>
+  <xsd:element name="lineupOfAllTeamsResponse" nillable="true" type="ns0:lineupOfAllTeamsResponse"/>
+</xsd:schema>
   </wsdl:types>
   <wsdl:message name="lineupOfSingleTeamResponse">
-    <wsdl:part element="tns:SingleTeamResponse" name="parameters">
+    <wsdl:part element="ns1:lineupOfSingleTeamsResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="lineupOfSingleTeam">
@@ -66,7 +60,7 @@
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="lineupOfAllTeamsResponse">
-    <wsdl:part element="tns:AllTeamsResponse" name="parameters">
+    <wsdl:part element="ns1:lineupOfAllTeamsResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:portType name="Lineups">
