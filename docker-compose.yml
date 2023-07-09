@@ -42,7 +42,7 @@ services:
   player-microservice:
     build: ./player
     ports:
-      - "9060:9060"
+      - "9060-9065:9060"
     environment:
       CONFIG_SERVER_HOST: config-server
       CONFIG_SERVER_PORT: 8888
@@ -59,7 +59,7 @@ services:
   stats-microservice:
     build: ./stats
     ports:
-      - "9061:9061"
+      - "9066-9069:9066"
     environment:
       CONFIG_SERVER_HOST: config-server
       CONFIG_SERVER_PORT: 8888
@@ -76,7 +76,7 @@ services:
   prosumer-1-microservice:
     build: ./prosumer-1
     ports:
-      - "9070:9070"
+      - "9070-9073:9070"
     environment:
       CONFIG_SERVER_HOST: config-server
       CONFIG_SERVER_PORT: 8888
@@ -88,7 +88,7 @@ services:
   prosumer-2-microservice:
     build: ./prosumer-2
     ports:
-      - "9071:9071"
+      - "9074-9076:9074"
     environment:
       CONFIG_SERVER_HOST: config-server
       CONFIG_SERVER_PORT: 8888
@@ -101,7 +101,7 @@ services:
   prosumer-3-microservice:
     build: ./prosumer-3
     ports:
-      - "9072:9072"
+      - "9077-9079:9077"
     environment:
       CONFIG_SERVER_HOST: config-server
       CONFIG_SERVER_PORT: 8888

@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
-@FeignClient(name = "player-microservice")
+@FeignClient(name = "api-gateway")
 public interface PlayerMicroserviceFeignClient {
-    @GetMapping("/player/surname/{surname}")
+    @GetMapping("/api/player/surname/{surname}")
     Player getPlayerBySurname(@PathVariable String surname);
 
-    @GetMapping("/player")
+    @GetMapping("/api/player")
     List<Player> getAllPlayers();
 }

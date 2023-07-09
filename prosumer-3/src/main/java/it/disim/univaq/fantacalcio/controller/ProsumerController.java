@@ -2,8 +2,7 @@ package it.disim.univaq.fantacalcio.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
-import it.disim.univaq.fantacalcio.feignclient.PlayerMicroserviceFeignClient;
-import it.disim.univaq.fantacalcio.feignclient.StatsMicroserviceFeignClient;
+import it.disim.univaq.fantacalcio.feignclient.MicroservicesFeignClient;
 import it.disim.univaq.fantacalcio.model.Player;
 import it.disim.univaq.fantacalcio.model.Stats;
 
@@ -25,10 +24,8 @@ public class ProsumerController {
 	private String portNumber;
 	
 	@Autowired
-	private PlayerMicroserviceFeignClient playerMicroserviceFeignClient;
+	private MicroservicesFeignClient microservicesFeignClient;
 	
-	@Autowired
-	private StatsMicroserviceFeignClient statsMicroserviceFeignClient;
 	
 	@GetMapping("/rating")
 	@Operation(summary = "Get the best formation by rating")
@@ -44,9 +41,9 @@ public class ProsumerController {
 		
 				
 		// Retrieve the list of all players in the lineups from the player REST microservice
-		List<Player> players = playerMicroserviceFeignClient.getPlayers();
+		List<Player> players = microservicesFeignClient.getPlayers();
 		
-		List<Stats> stats = statsMicroserviceFeignClient.getStats();
+		List<Stats> stats = microservicesFeignClient.getStats();
 		
 		
         Collections.sort(stats, Comparator.comparing(Stats::fanta_mean).reversed());
@@ -97,9 +94,9 @@ public class ProsumerController {
 		List<Player> bestFormation = new ArrayList<Player>();
 		
 		
-		List<Player> players = playerMicroserviceFeignClient.getPlayers();
+		List<Player> players = microservicesFeignClient.getPlayers();
 		
-		List<Stats> stats = statsMicroserviceFeignClient.getStats();
+		List<Stats> stats = microservicesFeignClient.getStats();
 		
 		
         Collections.sort(stats, Comparator.comparing(Stats::matches_played).reversed());
@@ -150,9 +147,9 @@ public class ProsumerController {
 		List<Player> bestFormation = new ArrayList<Player>();
 		
 		
-		List<Player> players = playerMicroserviceFeignClient.getPlayers();
+		List<Player> players = microservicesFeignClient.getPlayers();
 		
-		List<Stats> stats = statsMicroserviceFeignClient.getStats();
+		List<Stats> stats = microservicesFeignClient.getStats();
 		
 		
         Collections.sort(stats, Comparator.comparing(Stats::fanta_mean).reversed());
@@ -210,9 +207,9 @@ public class ProsumerController {
 		List<Player> bestFormation = new ArrayList<Player>();
 		
 		
-		List<Player> players = playerMicroserviceFeignClient.getPlayers();
+		List<Player> players = microservicesFeignClient.getPlayers();
 		
-		List<Stats> stats = statsMicroserviceFeignClient.getStats();
+		List<Stats> stats = microservicesFeignClient.getStats();
 		
 		
         Collections.sort(stats, Comparator.comparing(Stats::fanta_mean).reversed());
