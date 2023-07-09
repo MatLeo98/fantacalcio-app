@@ -443,7 +443,7 @@ ul.email li a {
 .read_more {
      display: inline-block;
      background: #26cc35;
-     color: #fff;
+     color: #fff !important;
      max-width: 201px;
      height: 67px;
      line-height: 67px;
@@ -579,10 +579,6 @@ ul.email li a {
 .posi_in {
      position: inherit;
      padding: 0;
-}
-
-.trannir_text i img {
-     border-radius: 50%;
 }
 
 .trannir_text h3 {
@@ -896,6 +892,10 @@ ul.social_icon li a:hover {
      width: 63px;
 }
 
+.img-campioncini:hover {
+     opacity: 80%;
+}
+
 .goalkeeper {
      grid-column: 6;
      grid-row: 1;
@@ -978,6 +978,43 @@ select {
 .invisible {
      display: none;
 }
+
+/*statistics*/
+.player-statistics {
+     margin-top: 20px;
+}
+
+.player-statistics h3 {
+     font-size: 20px;
+     margin-bottom: 10px;
+}
+
+.player-statistics table {
+     width: 100%;
+     border-collapse: collapse;
+     text-align: center;
+     margin: 20px;
+}
+
+.player-statistics th,
+.player-statistics td {
+     padding: 8px;
+     border: 1px solid #ccc;
+     color: #000;
+}
+
+.player-statistics th {
+     background-color: #26cc35;
+}
+
+.player-statistics tr:nth-child(even) {
+     background-color: #f9f9f9;
+}
+
+.player-statistics tr:hover {
+     background-color: #eaeaea;
+}
+
 
 
 /** end contact section **/

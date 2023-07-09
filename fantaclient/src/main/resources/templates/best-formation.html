@@ -12,6 +12,8 @@
       <link rel="stylesheet" href="css/responsive.css">
       <!-- awesome fontfamily -->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
    </head>
 
    <body class="main-layout">
@@ -31,34 +33,34 @@
 					    <p>
                      <div class="sfondo">
                            <div class="grid1">
-                              <div class="goalkeeper" th:each="element : ${goalkeeper}"><img th:src="@{${'http://localhost:9071/campioncini/' + element.getSurname()}}" alt="Portiere" class="img-campioncini"></div>
+                              <div class="goalkeeper" th:each="element : ${goalkeeper}"><a th:href="@{${'/stats?playerId=' + element.getId() + '&surname=' + element.getSurname() + '&role=' + element.getRole()}}"><img th:src="@{${'http://localhost:9071/campioncini/' + element.getSurname()}}" th:id="${element.getId()}" th:alt="${element.getSurname()}" class="img-campioncini"></a></div>
                            </div>
                            <div class="grid2-3" th:if="${nDif == 3}">
-                              <div class="defender3" th:each="element : ${defenders}"><img th:src="@{${'http://localhost:9071/campioncini/' + element.getSurname()}}" alt="Difensore" class="img-campioncini"></div>
+                              <div class="defender3" th:each="element : ${defenders}"><a th:href="@{${'/stats?playerId=' + element.getId() + '&surname=' + element.getSurname() + '&role=' + element.getRole()}}"><img th:src="@{${'http://localhost:9071/campioncini/' + element.getSurname()}}" th:id="${element.getId()}" th:alt="${element.getSurname()}" class="img-campioncini"></a></div>
                            </div>
                            <div class="grid4" th:if="${nDif == 4}">
-                              <div class="defender4-5" th:each="element : ${defenders}"><img th:src="@{${'http://localhost:9071/campioncini/' + element.getSurname()}}" alt="Difensore" class="img-campioncini"></div>
+                              <div class="defender4-5" th:each="element : ${defenders}"><a th:href="@{${'/stats?playerId=' + element.getId() + '&surname=' + element.getSurname() + '&role=' + element.getRole()}}"><img th:src="@{${'http://localhost:9071/campioncini/' + element.getSurname()}}" th:id="${element.getId()}" th:alt="${element.getSurname()}" class="img-campioncini"></a></div>
                            </div>
                            <div class="grid5" th:if="${nDif == 5}">
-                              <div class="defender4-5" th:each="element : ${defenders}"><img th:src="@{${'http://localhost:9071/campioncini/' + element.getSurname()}}" alt="Difensore" class="img-campioncini"></div>
+                              <div class="defender4-5" th:each="element : ${defenders}"><a th:href="@{${'/stats?playerId=' + element.getId() + '&surname=' + element.getSurname() + '&role=' + element.getRole()}}"><img th:src="@{${'http://localhost:9071/campioncini/' + element.getSurname()}}" th:id="${element.getId()}" th:alt="${element.getSurname()}" class="img-campioncini"></a></div>
                            </div>
                            <div class="grid2-3" th:if="${nCen == 3}">
-                              <div class="midfielder3" th:each="element : ${midfielders}"><img th:src="@{${'http://localhost:9071/campioncini/' + element.getSurname()}}" alt="Centrocampista" class="img-campioncini"></div>
+                              <div class="midfielder3" th:each="element : ${midfielders}"><a th:href="@{${'/stats?playerId=' + element.getId() + '&surname=' + element.getSurname() + '&role=' + element.getRole()}}"><img th:src="@{${'http://localhost:9071/campioncini/' + element.getSurname()}}" th:id="${element.getId()}" th:alt="${element.getSurname()}" class="img-campioncini"></a></div>
                            </div>
                            <div class="grid4" th:if="${nCen == 4}">
-                              <div class="midfielder4-5" th:each="element : ${midfielders}"><img th:src="@{${'http://localhost:9071/campioncini/' + element.getSurname()}}" alt="Centrocampista" class="img-campioncini"></div>
+                              <div class="midfielder4-5" th:each="element : ${midfielders}"><a th:href="@{${'/stats?playerId=' + element.getId() + '&surname=' + element.getSurname() + '&role=' + element.getRole()}}"><img th:src="@{${'http://localhost:9071/campioncini/' + element.getSurname()}}" th:id="${element.getId()}" th:alt="${element.getSurname()}" class="img-campioncini"></a></div>
                            </div>
                            <div class="grid5" th:if="${nCen == 5}">
-                              <div class="midfielder4-5" th:each="element : ${midfielders}"><img th:src="@{${'http://localhost:9071/campioncini/' + element.getSurname()}}" alt="Centrocampista" class="img-campioncini"></div>
+                              <div class="midfielder4-5" th:each="element : ${midfielders}"><a th:href="@{${'/stats?playerId=' + element.getId() + '&surname=' + element.getSurname() + '&role=' + element.getRole()}}"><img th:src="@{${'http://localhost:9071/campioncini/' + element.getSurname()}}" th:id="${element.getId()}" th:alt="${element.getSurname()}" class="img-campioncini"></a></div>
                            </div>
                            <div class="grid1" th:if="${nAtt == 1}">
-                              <div class="striker1" th:each="element : ${strikers}"><img th:src="@{${'http://localhost:9071/campioncini/' + element.getSurname()}}" alt="Attaccante" class="img-campioncini"></div>
+                              <div class="striker1" th:each="element : ${strikers}"><a th:href="@{${'/stats?playerId=' + element.getId() + '&surname=' + element.getSurname() + '&role=' + element.getRole()}}"><img th:src="@{${'http://localhost:9071/campioncini/' + element.getSurname()}}" th:id="${element.getId()}" th:alt="${element.getSurname()}" class="img-campioncini"></a></div>
                            </div>
                            <div class="grid2-3" th:if="${nAtt == 2}">
-                              <div class="striker2" th:each="element : ${strikers}"><img th:src="@{${'http://localhost:9071/campioncini/' + element.getSurname()}}" alt="Attaccante" class="img-campioncini"></div>
+                              <div class="striker2" th:each="element : ${strikers}"><a th:href="@{${'/stats?playerId=' + element.getId() + '&surname=' + element.getSurname() + '&role=' + element.getRole()}}"><img th:src="@{${'http://localhost:9071/campioncini/' + element.getSurname()}}" th:id="${element.getId()}" th:alt="${element.getSurname()}" class="img-campioncini"></a></div>
                            </div>
                            <div class="grid2-3" th:if="${nAtt == 3}">
-                              <div class="striker3" th:each="element : ${strikers}"><img th:src="@{${'http://localhost:9071/campioncini/' + element.getSurname()}}" alt="Attaccante" class="img-campioncini"></div>
+                              <div class="striker3" th:each="element : ${strikers}"><a th:href="@{${'/stats?playerId=' + element.getId() + '&surname=' + element.getSurname() + '&role=' + element.getRole()}}"><img th:src="@{${'http://localhost:9071/campioncini/' + element.getSurname()}}" th:id="${element.getId()}" th:alt="${element.getSurname()}" class="img-campioncini"></a></div>
                            </div>
                   </div>
 					    </p>

@@ -3,14 +3,16 @@ package it.disim.univaq.fantaclient.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import it.disim.univaq.fantaclient.model.StatsModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import it.disim.univaq.fantaclient.feignclient.FantaFeignClient;
-import it.disim.univaq.fantaclient.model.DataModel;
+import it.disim.univaq.fantaclient.model.PlayerModel;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -32,7 +34,7 @@ public class FantaController {
 								 @RequestParam(required = false) String age,
 								 @RequestParam(required = false) String criteria,
 								 Model model) {
-		List<DataModel> best = new ArrayList<>();
+		List<PlayerModel> best = new ArrayList<>();
 		if(criteria != null && !criteria.isEmpty()){
 			switch(criteria) {
 				case "rating" -> best = fantafeignclient.getBestFormationByFantaMean(formationDesired);
@@ -45,10 +47,10 @@ public class FantaController {
 		} else {
 		    best = fantafeignclient.getBestFormation(formationDesired);
 		}
-		List<DataModel> goalkeeper = new ArrayList<>();
-		List<DataModel> defenders = new ArrayList<>();
-		List<DataModel> midfielders = new ArrayList<>();
-		List<DataModel> strikers = new ArrayList<>();
+		List<PlayerModel> goalkeeper = new ArrayList<>();
+		List<PlayerModel> defenders = new ArrayList<>();
+		List<PlayerModel> midfielders = new ArrayList<>();
+		List<PlayerModel> strikers = new ArrayList<>();
 		  var modulo = "";
 		  var dif = 0;
 		  var cen = 0;
@@ -83,6 +85,17 @@ public class FantaController {
 	      model.addAttribute("nDif", dif);
 	      model.addAttribute("nCen", cen);
 	      model.addAttribute("nAtt", att);
+	}
+
+	@GetMapping("/stats")
+	public void getStats(@RequestParam("playerId") Long playerId,
+	                     @RequestParam("surname") String surname,
+	                     @RequestParam("role") String role,
+								 Model model) {
+		StatsModel stats = fantafeignclient.getStatsByPlayer(playerId);
+		model.addAttribute("stats", stats);
+		model.addAttribute("surname", surname);
+		model.addAttribute("role", role);
 	}
 	
 }

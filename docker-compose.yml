@@ -97,7 +97,7 @@ services:
       - config-server
       - discovery-server
       - player-microservice
-#      - stats-microservice
+
   prosumer-3-microservice:
     build: ./prosumer-3
     ports:
@@ -110,7 +110,7 @@ services:
       - config-server
       - discovery-server
       - player-microservice
-  #      - stats-microservice
+      - stats-microservice
   fantaclient:
     build: ./fantaclient
     ports:

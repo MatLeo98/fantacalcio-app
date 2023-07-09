@@ -2,7 +2,7 @@ package it.disim.univaq.fantaclient.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class DataModel {
+public class PlayerModel {
 	
 	@JsonProperty("id")
 	private Integer id;
