@@ -46,7 +46,7 @@
                            <div class="container">
                               <div class="carousel-caption posi_in">
                                  <div th:if="${role == 'P'}" class="player-statistics">
-                                    <i><img th:src="@{${'http://localhost:9071/campioncini/' + surname}}" alt="#"/></i>
+                                    <i><img th:src="@{'data:image/png;base64,' +${campioncino}}" alt="#"/></i>
                                     <table>
                                        <tr>
                                           <th>Matches Played</th>
@@ -75,7 +75,7 @@
                                     </table>
                                  </div>
                                  <div th:if="${role != 'P'}" class="player-statistics">
-                                    <i><img th:src="@{${'http://localhost:9000/api/campioncini/' + surname}}" alt="#"/></i>
+                                    <i><img th:src="@{@{'data:image/png;base64,' +${campioncino}}}" alt="#"/></i>
                                     <table>
                                        <tr>
                                           <th>Matches Played</th>

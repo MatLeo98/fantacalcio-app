@@ -1,113 +1,416 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <!-- basic -->
-      <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <!-- bootstrap css -->
-      <link rel="stylesheet" href="css/bootstrap.min.css">
-      <!-- style css -->
-      <link rel="stylesheet" href="css/style.css">
-      <!-- responsive-->
-      <link rel="stylesheet" href="css/responsive.css">
-      <!-- awesome fontfamily -->
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-   </head>
+<head>
+    <!-- basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- style css -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- responsive-->
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- awesome fontfamily -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-   <body class="main-layout">
-      
-      <div class="our_club">
-         <div class="container">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body class="main-layout">
+
+<div class="our_club">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <div class="titlepage text_align_center">
+                    <h2>FantaUnivaq</h2>
+                    <p th:text="${message}"></p>
+                </div>
+            </div>
+            <div class="col-md-12 text_align_center">
+                <p>
+                <h2 th:text="${'This is the current best formation for module ' + modulo + ':'}"></h2>
+                </p>
+
+                <p>
+                <div class="sfondo">
+                    <div class="grid1">
+                        <div class="goalkeeper" th:each="element : ${goalkeeper}"><a
+                                th:href="@{${'/stats?playerId=' + element.getId() + '&surname=' + element.getSurname() + '&role=' + element.getRole()}}"><img
+                                th:src="@{'data:image/png;base64,' + ${images.get(element.getId())}}"
+                                th:id="${element.getId()}" th:alt="${element.getSurname()}"
+                                class="img-campioncini"></a>
+                            <table>
+                                <tr>
+                                    <th>Matches Played</th>
+                                    <th>Fanta Mean</th>
+                                    <th>Rating Avarage</th>
+                                    <th>Goals Conceded</th>
+                                    <th>Penalties Saved</th>
+                                    <th>Assist</th>
+                                    <th>Yellow Cards</th>
+                                    <th>Red Cards</th>
+                                    <th>Autogoals</th>
+                                    <th>Clean Sheets</th>
+                                </tr>
+                                <tr>
+                                    <td th:text="${stats.get(element.getId()).matches_played}"></td>
+                                    <td th:text="${stats.get(element.getId()).fanta_mean}"></td>
+                                    <td th:text="${stats.get(element.getId()).rating_avarage}"></td>
+                                    <td th:text="${stats.get(element.getId()).goals_conceded}"></td>
+                                    <td th:text="${stats.get(element.getId()).penalties_saved}"></td>
+                                    <td th:text="${stats.get(element.getId()).assists}"></td>
+                                    <td th:text="${stats.get(element.getId()).yellow_cards}"></td>
+                                    <td th:text="${stats.get(element.getId()).red_cards}"></td>
+                                    <td th:text="${stats.get(element.getId()).autogoals}"></td>
+                                    <td th:text="${stats.get(element.getId()).clean_sheet}"></td>
+                                </tr>
+                            </table>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="grid2-3" th:if="${nDif == 3}">
+                        <div class="defender3" th:each="element : ${defenders}"><a
+                                th:href="@{${'/stats?playerId=' + element.getId() + '&surname=' + element.getSurname() + '&role=' + element.getRole()}}"><img
+                                th:src="@{'data:image/png;base64,' + ${images.get(element.getId())}}"
+                                th:id="${element.getId()}" th:alt="${element.getSurname()}"
+                                class="img-campioncini"></a><table>
+                                <tr>
+                                    <th>Matches Played</th>
+                                    <th>Fanta Mean</th>
+                                    <th>Rating Avarage</th>
+                                    <th>Goals Conceded</th>
+                                    <th>Penalties Saved</th>
+                                    <th>Assist</th>
+                                    <th>Yellow Cards</th>
+                                    <th>Red Cards</th>
+                                    <th>Autogoals</th>
+                                    <th>Clean Sheets</th>
+                                </tr>
+                                <tr>
+                                    <td th:text="${stats.get(element.getId()).matches_played}"></td>
+                                    <td th:text="${stats.get(element.getId()).fanta_mean}"></td>
+                                    <td th:text="${stats.get(element.getId()).rating_avarage}"></td>
+                                    <td th:text="${stats.get(element.getId()).goals_conceded}"></td>
+                                    <td th:text="${stats.get(element.getId()).penalties_saved}"></td>
+                                    <td th:text="${stats.get(element.getId()).assists}"></td>
+                                    <td th:text="${stats.get(element.getId()).yellow_cards}"></td>
+                                    <td th:text="${stats.get(element.getId()).red_cards}"></td>
+                                    <td th:text="${stats.get(element.getId()).autogoals}"></td>
+                                    <td th:text="${stats.get(element.getId()).clean_sheet}"></td>
+                                </tr>
+                            </table></div>
+                    </div>
+                    <div class="grid4" th:if="${nDif == 4}">
+                        <div class="defender4-5" th:each="element : ${defenders}"><a
+                                th:href="@{${'/stats?playerId=' + element.getId() + '&surname=' + element.getSurname() + '&role=' + element.getRole()}}"><img
+                                th:src="@{'data:image/png;base64,' + ${images.get(element.getId())}}"
+                                th:id="${element.getId()}" th:alt="${element.getSurname()}"
+                                class="img-campioncini"></a><table>
+                                <tr>
+                                    <th>Matches Played</th>
+                                    <th>Fanta Mean</th>
+                                    <th>Rating Avarage</th>
+                                    <th>Goals Conceded</th>
+                                    <th>Penalties Saved</th>
+                                    <th>Assist</th>
+                                    <th>Yellow Cards</th>
+                                    <th>Red Cards</th>
+                                    <th>Autogoals</th>
+                                    <th>Clean Sheets</th>
+                                </tr>
+                                <tr>
+                                    <td th:text="${stats.get(element.getId()).matches_played}"></td>
+                                    <td th:text="${stats.get(element.getId()).fanta_mean}"></td>
+                                    <td th:text="${stats.get(element.getId()).rating_avarage}"></td>
+                                    <td th:text="${stats.get(element.getId()).goals_conceded}"></td>
+                                    <td th:text="${stats.get(element.getId()).penalties_saved}"></td>
+                                    <td th:text="${stats.get(element.getId()).assists}"></td>
+                                    <td th:text="${stats.get(element.getId()).yellow_cards}"></td>
+                                    <td th:text="${stats.get(element.getId()).red_cards}"></td>
+                                    <td th:text="${stats.get(element.getId()).autogoals}"></td>
+                                    <td th:text="${stats.get(element.getId()).clean_sheet}"></td>
+                                </tr>
+                            </table></div>
+                    </div>
+                    <div class="grid5" th:if="${nDif == 5}">
+                        <div class="defender4-5" th:each="element : ${defenders}"><a
+                                th:href="@{${'/stats?playerId=' + element.getId() + '&surname=' + element.getSurname() + '&role=' + element.getRole()}}"><img
+                                th:src="@{'data:image/png;base64,' + ${images.get(element.getId())}}"
+                                th:id="${element.getId()}" th:alt="${element.getSurname()}"
+                                class="img-campioncini"></a><table>
+                                <tr>
+                                    <th>Matches Played</th>
+                                    <th>Fanta Mean</th>
+                                    <th>Rating Avarage</th>
+                                    <th>Goals Conceded</th>
+                                    <th>Penalties Saved</th>
+                                    <th>Assist</th>
+                                    <th>Yellow Cards</th>
+                                    <th>Red Cards</th>
+                                    <th>Autogoals</th>
+                                    <th>Clean Sheets</th>
+                                </tr>
+                                <tr>
+                                    <td th:text="${stats.get(element.getId()).matches_played}"></td>
+                                    <td th:text="${stats.get(element.getId()).fanta_mean}"></td>
+                                    <td th:text="${stats.get(element.getId()).rating_avarage}"></td>
+                                    <td th:text="${stats.get(element.getId()).goals_conceded}"></td>
+                                    <td th:text="${stats.get(element.getId()).penalties_saved}"></td>
+                                    <td th:text="${stats.get(element.getId()).assists}"></td>
+                                    <td th:text="${stats.get(element.getId()).yellow_cards}"></td>
+                                    <td th:text="${stats.get(element.getId()).red_cards}"></td>
+                                    <td th:text="${stats.get(element.getId()).autogoals}"></td>
+                                    <td th:text="${stats.get(element.getId()).clean_sheet}"></td>
+                                </tr>
+                            </table></div>
+                    </div>
+                    <div class="grid2-3" th:if="${nCen == 3}">
+                        <div class="midfielder3" th:each="element : ${midfielders}">
+                            <a
+                                    th:href="@{${'/stats?playerId=' + element.getId() + '&surname=' + element.getSurname() + '&role=' + element.getRole()}}">
+                                <img th:src="@{'data:image/png;base64,' + ${images.get(element.getId())}}"
+                                     th:id="${element.getId()}" th:alt="${element.getSurname()}"
+                                     class="img-campioncini"></a><table>
+                                <tr>
+                                    <th>Matches Played</th>
+                                    <th>Fanta Mean</th>
+                                    <th>Rating Avarage</th>
+                                    <th>Goals Conceded</th>
+                                    <th>Penalties Saved</th>
+                                    <th>Assist</th>
+                                    <th>Yellow Cards</th>
+                                    <th>Red Cards</th>
+                                    <th>Autogoals</th>
+                                    <th>Clean Sheets</th>
+                                </tr>
+                                <tr>
+                                    <td th:text="${stats.get(element.getId()).matches_played}"></td>
+                                    <td th:text="${stats.get(element.getId()).fanta_mean}"></td>
+                                    <td th:text="${stats.get(element.getId()).rating_avarage}"></td>
+                                    <td th:text="${stats.get(element.getId()).goals_conceded}"></td>
+                                    <td th:text="${stats.get(element.getId()).penalties_saved}"></td>
+                                    <td th:text="${stats.get(element.getId()).assists}"></td>
+                                    <td th:text="${stats.get(element.getId()).yellow_cards}"></td>
+                                    <td th:text="${stats.get(element.getId()).red_cards}"></td>
+                                    <td th:text="${stats.get(element.getId()).autogoals}"></td>
+                                    <td th:text="${stats.get(element.getId()).clean_sheet}"></td>
+                                </tr>
+                            </table></div>
+                    </div>
+                    <div class="grid4" th:if="${nCen == 4}">
+                        <div class="midfielder4-5" th:each="element : ${midfielders}">
+                            <a
+                                    th:href="@{${'/stats?playerId=' + element.getId() + '&surname=' + element.getSurname() + '&role=' + element.getRole()}}"><img
+                                    th:src="@{'data:image/png;base64,' + ${images.get(element.getId())}}"
+                                    th:id="${element.getId()}" th:alt="${element.getSurname()}"
+                                    class="img-campioncini"></a><table>
+                                <tr>
+                                    <th>Matches Played</th>
+                                    <th>Fanta Mean</th>
+                                    <th>Rating Avarage</th>
+                                    <th>Goals Conceded</th>
+                                    <th>Penalties Saved</th>
+                                    <th>Assist</th>
+                                    <th>Yellow Cards</th>
+                                    <th>Red Cards</th>
+                                    <th>Autogoals</th>
+                                    <th>Clean Sheets</th>
+                                </tr>
+                                <tr>
+                                    <td th:text="${stats.get(element.getId()).matches_played}"></td>
+                                    <td th:text="${stats.get(element.getId()).fanta_mean}"></td>
+                                    <td th:text="${stats.get(element.getId()).rating_avarage}"></td>
+                                    <td th:text="${stats.get(element.getId()).goals_conceded}"></td>
+                                    <td th:text="${stats.get(element.getId()).penalties_saved}"></td>
+                                    <td th:text="${stats.get(element.getId()).assists}"></td>
+                                    <td th:text="${stats.get(element.getId()).yellow_cards}"></td>
+                                    <td th:text="${stats.get(element.getId()).red_cards}"></td>
+                                    <td th:text="${stats.get(element.getId()).autogoals}"></td>
+                                    <td th:text="${stats.get(element.getId()).clean_sheet}"></td>
+                                </tr>
+                            </table></div>
+                    </div>
+                    <div class="grid5" th:if="${nCen == 5}">
+                        <div class="midfielder4-5" th:each="element : ${midfielders}"><a
+                                th:href="@{${'/stats?playerId=' + element.getId() + '&surname=' + element.getSurname() + '&role=' + element.getRole()}}"><img
+                                th:src="@{'data:image/png;base64,' + ${images.get(element.getId())}}"
+                                th:id="${element.getId()}" th:alt="${element.getSurname()}"
+                                class="img-campioncini"></a><table>
+                                <tr>
+                                    <th>Matches Played</th>
+                                    <th>Fanta Mean</th>
+                                    <th>Rating Avarage</th>
+                                    <th>Goals Conceded</th>
+                                    <th>Penalties Saved</th>
+                                    <th>Assist</th>
+                                    <th>Yellow Cards</th>
+                                    <th>Red Cards</th>
+                                    <th>Autogoals</th>
+                                    <th>Clean Sheets</th>
+                                </tr>
+                                <tr>
+                                    <td th:text="${stats.get(element.getId()).matches_played}"></td>
+                                    <td th:text="${stats.get(element.getId()).fanta_mean}"></td>
+                                    <td th:text="${stats.get(element.getId()).rating_avarage}"></td>
+                                    <td th:text="${stats.get(element.getId()).goals_conceded}"></td>
+                                    <td th:text="${stats.get(element.getId()).penalties_saved}"></td>
+                                    <td th:text="${stats.get(element.getId()).assists}"></td>
+                                    <td th:text="${stats.get(element.getId()).yellow_cards}"></td>
+                                    <td th:text="${stats.get(element.getId()).red_cards}"></td>
+                                    <td th:text="${stats.get(element.getId()).autogoals}"></td>
+                                    <td th:text="${stats.get(element.getId()).clean_sheet}"></td>
+                                </tr>
+                            </table></div>
+                    </div>
+                    <div class="grid1" th:if="${nAtt == 1}">
+                        <div class="striker1" th:each="element : ${strikers}"><a
+                                th:href="@{${'/stats?playerId=' + element.getId() + '&surname=' + element.getSurname() + '&role=' + element.getRole()}}"><img
+                                th:src="@{'data:image/png;base64,' + ${images.get(element.getId())}}"
+                                th:id="${element.getId()}" th:alt="${element.getSurname()}"
+                                class="img-campioncini"></a><table>
+                                <tr>
+                                    <th>Matches Played</th>
+                                    <th>Fanta Mean</th>
+                                    <th>Rating Avarage</th>
+                                    <th>Goals Conceded</th>
+                                    <th>Penalties Saved</th>
+                                    <th>Assist</th>
+                                    <th>Yellow Cards</th>
+                                    <th>Red Cards</th>
+                                    <th>Autogoals</th>
+                                    <th>Clean Sheets</th>
+                                </tr>
+                                <tr>
+                                    <td th:text="${stats.get(element.getId()).matches_played}"></td>
+                                    <td th:text="${stats.get(element.getId()).fanta_mean}"></td>
+                                    <td th:text="${stats.get(element.getId()).rating_avarage}"></td>
+                                    <td th:text="${stats.get(element.getId()).goals_conceded}"></td>
+                                    <td th:text="${stats.get(element.getId()).penalties_saved}"></td>
+                                    <td th:text="${stats.get(element.getId()).assists}"></td>
+                                    <td th:text="${stats.get(element.getId()).yellow_cards}"></td>
+                                    <td th:text="${stats.get(element.getId()).red_cards}"></td>
+                                    <td th:text="${stats.get(element.getId()).autogoals}"></td>
+                                    <td th:text="${stats.get(element.getId()).clean_sheet}"></td>
+                                </tr>
+                            </table></div>
+                    </div>
+                    <div class="grid2-3" th:if="${nAtt == 2}">
+                        <div class="striker2" th:each="element : ${strikers}"><a
+                                th:href="@{${'/stats?playerId=' + element.getId() + '&surname=' + element.getSurname() + '&role=' + element.getRole()}}"><img
+                                th:src="@{'data:image/png;base64,' + ${images.get(element.getId())}}"
+                                th:id="${element.getId()}" th:alt="${element.getSurname()}"
+                                class="img-campioncini"></a><table>
+                                <tr>
+                                    <th>Matches Played</th>
+                                    <th>Fanta Mean</th>
+                                    <th>Rating Avarage</th>
+                                    <th>Goals Conceded</th>
+                                    <th>Penalties Saved</th>
+                                    <th>Assist</th>
+                                    <th>Yellow Cards</th>
+                                    <th>Red Cards</th>
+                                    <th>Autogoals</th>
+                                    <th>Clean Sheets</th>
+                                </tr>
+                                <tr>
+                                    <td th:text="${stats.get(element.getId()).matches_played}"></td>
+                                    <td th:text="${stats.get(element.getId()).fanta_mean}"></td>
+                                    <td th:text="${stats.get(element.getId()).rating_avarage}"></td>
+                                    <td th:text="${stats.get(element.getId()).goals_conceded}"></td>
+                                    <td th:text="${stats.get(element.getId()).penalties_saved}"></td>
+                                    <td th:text="${stats.get(element.getId()).assists}"></td>
+                                    <td th:text="${stats.get(element.getId()).yellow_cards}"></td>
+                                    <td th:text="${stats.get(element.getId()).red_cards}"></td>
+                                    <td th:text="${stats.get(element.getId()).autogoals}"></td>
+                                    <td th:text="${stats.get(element.getId()).clean_sheet}"></td>
+                                </tr>
+                            </table></div>
+                    </div>
+                    <div class="grid2-3" th:if="${nAtt == 3}">
+                        <div class="striker3" th:each="element : ${strikers}"><a
+                                th:href="@{${'/stats?playerId=' + element.getId() + '&surname=' + element.getSurname() + '&role=' + element.getRole()}}"><img
+                                th:src="@{'data:image/png;base64,' + ${images.get(element.getId())}}"
+                                th:id="${element.getId()}" th:alt="${element.getSurname()}"
+                                class="img-campioncini"></a><table>
+                                <tr>
+                                    <th>Matches Played</th>
+                                    <th>Fanta Mean</th>
+                                    <th>Rating Avarage</th>
+                                    <th>Goals Conceded</th>
+                                    <th>Penalties Saved</th>
+                                    <th>Assist</th>
+                                    <th>Yellow Cards</th>
+                                    <th>Red Cards</th>
+                                    <th>Autogoals</th>
+                                    <th>Clean Sheets</th>
+                                </tr>
+                                <tr>
+                                    <td th:text="${stats.get(element.getId()).matches_played}"></td>
+                                    <td th:text="${stats.get(element.getId()).fanta_mean}"></td>
+                                    <td th:text="${stats.get(element.getId()).rating_avarage}"></td>
+                                    <td th:text="${stats.get(element.getId()).goals_conceded}"></td>
+                                    <td th:text="${stats.get(element.getId()).penalties_saved}"></td>
+                                    <td th:text="${stats.get(element.getId()).assists}"></td>
+                                    <td th:text="${stats.get(element.getId()).yellow_cards}"></td>
+                                    <td th:text="${stats.get(element.getId()).red_cards}"></td>
+                                    <td th:text="${stats.get(element.getId()).autogoals}"></td>
+                                    <td th:text="${stats.get(element.getId()).clean_sheet}"></td>
+                                </tr>
+                            </table></div>
+                    </div>
+                </div>
+                </p>
+                <p><a class="read_more" th:href="@{/}">Go back to the home</a></p>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<footer>
+    <div class="footer">
+        <div class="container">
             <div class="row">
-               <div class="col-md-10 offset-md-1">
-                  <div class="titlepage text_align_center">
-                     <h2>FantaUnivaq</h2>
-                     <p th:text="${message}"></p>
-                  </div>
-               </div>
-                  <div class="col-md-12 text_align_center">
-					 <p><h2 th:text="${'This is the current best formation for module ' + modulo + ':'}"></h2></p>
-					    
-					    <p>
-                     <div class="sfondo">
-                           <div class="grid1">
-                              <div class="goalkeeper" th:each="element : ${goalkeeper}"><a th:href="@{${'/stats?playerId=' + element.getId() + '&surname=' + element.getSurname() + '&role=' + element.getRole()}}"><img th:src="@{${'http://localhost:9000/api/campioncini/' + element.getSurname()}}" th:id="${element.getId()}" th:alt="${element.getSurname()}" class="img-campioncini"></a></div>
-                           </div>
-                           <div class="grid2-3" th:if="${nDif == 3}">
-                              <div class="defender3" th:each="element : ${defenders}"><a th:href="@{${'/stats?playerId=' + element.getId() + '&surname=' + element.getSurname() + '&role=' + element.getRole()}}"><img th:src="@{${'http://localhost:9000/api/campioncini/' + element.getSurname()}}" th:id="${element.getId()}" th:alt="${element.getSurname()}" class="img-campioncini"></a></div>
-                           </div>
-                           <div class="grid4" th:if="${nDif == 4}">
-                              <div class="defender4-5" th:each="element : ${defenders}"><a th:href="@{${'/stats?playerId=' + element.getId() + '&surname=' + element.getSurname() + '&role=' + element.getRole()}}"><img th:src="@{${'http://localhost:9000/api/campioncini/' + element.getSurname()}}" th:id="${element.getId()}" th:alt="${element.getSurname()}" class="img-campioncini"></a></div>
-                           </div>
-                           <div class="grid5" th:if="${nDif == 5}">
-                              <div class="defender4-5" th:each="element : ${defenders}"><a th:href="@{${'/stats?playerId=' + element.getId() + '&surname=' + element.getSurname() + '&role=' + element.getRole()}}"><img th:src="@{${'http://localhost:9000/api/campioncini/' + element.getSurname()}}" th:id="${element.getId()}" th:alt="${element.getSurname()}" class="img-campioncini"></a></div>
-                           </div>
-                           <div class="grid2-3" th:if="${nCen == 3}">
-                              <div class="midfielder3" th:each="element : ${midfielders}"><a th:href="@{${'/stats?playerId=' + element.getId() + '&surname=' + element.getSurname() + '&role=' + element.getRole()}}"><img th:src="@{${'http://localhost:9000/api/campioncini/' + element.getSurname()}}" th:id="${element.getId()}" th:alt="${element.getSurname()}" class="img-campioncini"></a></div>
-                           </div>
-                           <div class="grid4" th:if="${nCen == 4}">
-                              <div class="midfielder4-5" th:each="element : ${midfielders}"><a th:href="@{${'/stats?playerId=' + element.getId() + '&surname=' + element.getSurname() + '&role=' + element.getRole()}}"><img th:src="@{${'http://localhost:9000/api/campioncini/' + element.getSurname()}}" th:id="${element.getId()}" th:alt="${element.getSurname()}" class="img-campioncini"></a></div>
-                           </div>
-                           <div class="grid5" th:if="${nCen == 5}">
-                              <div class="midfielder4-5" th:each="element : ${midfielders}"><a th:href="@{${'/stats?playerId=' + element.getId() + '&surname=' + element.getSurname() + '&role=' + element.getRole()}}"><img th:src="@{${'http://localhost:9000/api/campioncini/' + element.getSurname()}}" th:id="${element.getId()}" th:alt="${element.getSurname()}" class="img-campioncini"></a></div>
-                           </div>
-                           <div class="grid1" th:if="${nAtt == 1}">
-                              <div class="striker1" th:each="element : ${strikers}"><a th:href="@{${'/stats?playerId=' + element.getId() + '&surname=' + element.getSurname() + '&role=' + element.getRole()}}"><img th:src="@{${'http://localhost:9000/api/campioncini/' + element.getSurname()}}" th:id="${element.getId()}" th:alt="${element.getSurname()}" class="img-campioncini"></a></div>
-                           </div>
-                           <div class="grid2-3" th:if="${nAtt == 2}">
-                              <div class="striker2" th:each="element : ${strikers}"><a th:href="@{${'/stats?playerId=' + element.getId() + '&surname=' + element.getSurname() + '&role=' + element.getRole()}}"><img th:src="@{${'http://localhost:9000/api/campioncini/' + element.getSurname()}}" th:id="${element.getId()}" th:alt="${element.getSurname()}" class="img-campioncini"></a></div>
-                           </div>
-                           <div class="grid2-3" th:if="${nAtt == 3}">
-                              <div class="striker3" th:each="element : ${strikers}"><a th:href="@{${'/stats?playerId=' + element.getId() + '&surname=' + element.getSurname() + '&role=' + element.getRole()}}"><img th:src="@{${'http://localhost:9000/api/campioncini/' + element.getSurname()}}" th:id="${element.getId()}" th:alt="${element.getSurname()}" class="img-campioncini"></a></div>
-                           </div>
-                  </div>
-					    </p>
-					    <p><a class="read_more" th:href="@{/}">Go back to the home</a></p></p>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-
-      <footer>
-         <div class="footer">
-            <div class="container">
-               <div class="row">
-                  <div class="col-md-8 offset-md-2">
-                     <h3>Follow Us</h3>
-                     <ul class="social_icon text_align_center">
-                        <li> <a href="Javascript:void(0)"><i class="fa fa-facebook-f"></i></a></li>
-                        <li> <a href="Javascript:void(0)"><i class="fa fa-twitter"></i></a></li>
-                        <li> <a href="Javascript:void(0)"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                        <li> <a href="Javascript:void(0)"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                        <li> <a href="Javascript:void(0)"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
-                     </ul>
-                     <div class="conta text_align_center">
+                <div class="col-md-8 offset-md-2">
+                    <h3>Follow Us</h3>
+                    <ul class="social_icon text_align_center">
+                        <li><a href="Javascript:void(0)"><i class="fa fa-facebook-f"></i></a></li>
+                        <li><a href="Javascript:void(0)"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="Javascript:void(0)"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                        <li><a href="Javascript:void(0)"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                        </li>
+                        <li><a href="Javascript:void(0)"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+                        </li>
+                    </ul>
+                    <div class="conta text_align_center">
                         <ul>
-                           <li> <a href="Javascript:void(0)"><img src="images/call.png" alt="#"/> Call +01 1234567890
-                              </a>
-                           </li>
-                           <li> <a href="Javascript:void(0)"><img src="images/mall.png" alt="#"/> demo@gmail.com
-                              </a>
-                           </li>
+                            <li><a href="Javascript:void(0)"><img src="images/call.png" alt="#"/> Call +01
+                                1234567890
+                            </a>
+                            </li>
+                            <li><a href="Javascript:void(0)"><img src="images/mall.png" alt="#"/> demo@gmail.com
+                            </a>
+                            </li>
                         </ul>
-                     </div>
-                  </div>
-               </div>
+                    </div>
+                </div>
             </div>
-            <div class="copyright text_align_center">
-               <div class="container">
-                  <div class="row">
-                     <div class="col-md-8 offset-md-2">
+        </div>
+        <div class="copyright text_align_center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 offset-md-2">
                         <p>© 2020 All Rights Reserved. <a href="https://html.design/"> Free Html Template</a></p>
-                     </div>
-                  </div>
-               </div>
+                    </div>
+                </div>
             </div>
-         </div>
-      </footer>
+        </div>
+    </div>
+</footer>
 
-   </body>
+</body>
+
 </html>
