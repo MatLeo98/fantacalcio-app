@@ -15,6 +15,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script th:inline="javascript">
+        $(document).ready(function() {
+            $('.img-campioncini').hover(
+                function() {
+                    var tableId = 'stats' + $(this).attr('id');
+                    $('#' + tableId).removeClass('invisible');
+                },
+                function() {
+                    var tableId = 'stats' + $(this).attr('id');
+                    $('#' + tableId).addClass('invisible');
+                }
+            );
+        });
+    </script>
 </head>
 
 <body class="main-layout">
@@ -33,7 +47,6 @@
                 <h2 th:text="${'This is the current best formation for module ' + modulo + ':'}"></h2>
                 </p>
 
-                <p>
                 <div class="sfondo">
                     <div class="grid1">
                         <div class="goalkeeper" th:each="element : ${goalkeeper}"><a
@@ -41,130 +54,162 @@
                                 th:src="@{'data:image/png;base64,' + ${images.get(element.getId())}}"
                                 th:id="${element.getId()}" th:alt="${element.getSurname()}"
                                 class="img-campioncini"></a>
-                            <table>
-                                <tr>
-                                    <th>Matches Played</th>
-                                    <th>Fanta Mean</th>
-                                    <th>Rating Avarage</th>
-                                    <th>Goals Conceded</th>
-                                    <th>Penalties Saved</th>
-                                    <th>Assist</th>
-                                    <th>Yellow Cards</th>
-                                    <th>Red Cards</th>
-                                    <th>Autogoals</th>
-                                    <th>Clean Sheets</th>
-                                </tr>
-                                <tr>
-                                    <td th:text="${stats.get(element.getId()).matches_played}"></td>
-                                    <td th:text="${stats.get(element.getId()).fanta_mean}"></td>
-                                    <td th:text="${stats.get(element.getId()).rating_avarage}"></td>
-                                    <td th:text="${stats.get(element.getId()).goals_conceded}"></td>
-                                    <td th:text="${stats.get(element.getId()).penalties_saved}"></td>
-                                    <td th:text="${stats.get(element.getId()).assists}"></td>
-                                    <td th:text="${stats.get(element.getId()).yellow_cards}"></td>
-                                    <td th:text="${stats.get(element.getId()).red_cards}"></td>
-                                    <td th:text="${stats.get(element.getId()).autogoals}"></td>
-                                    <td th:text="${stats.get(element.getId()).clean_sheet}"></td>
-                                </tr>
-                            </table>
+                            <div class="player-statistics">
+                                <table class="invisible" id="stats2">
+                                    <tbody>
+                                        <tr>
+                                            <th>Matches Played</th>
+                                            <th>Fanta Mean</th>
+                                            <th>Rating Avarage</th>
+                                            <th>Goals Conceded</th>
+                                            <th>Penalties Saved</th>
+                                        </tr>
+                                        <tr>
+                                            <td th:text="${stats.get(element.getId()).matches_played}"></td>
+                                            <td th:text="${stats.get(element.getId()).fanta_mean}"></td>
+                                            <td th:text="${stats.get(element.getId()).rating_avarage}"></td>
+                                            <td th:text="${stats.get(element.getId()).goals_conceded}"></td>
+                                            <td th:text="${stats.get(element.getId()).penalties_saved}"></td>
+
+                                        </tr>
+                                        <tr>
+                                            <th>Assist</th>
+                                            <th>Yellow Cards</th>
+                                            <th>Red Cards</th>
+                                            <th>Autogoals</th>
+                                            <th>Clean Sheets</th>
+                                        </tr>
+                                        <tr>
+                                            <td th:text="${stats.get(element.getId()).assists}"></td>
+                                            <td th:text="${stats.get(element.getId()).yellow_cards}"></td>
+                                            <td th:text="${stats.get(element.getId()).red_cards}"></td>
+                                            <td th:text="${stats.get(element.getId()).autogoals}"></td>
+                                            <td th:text="${stats.get(element.getId()).clean_sheet}"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                         </div>
-                    </div>
                     <div class="grid2-3" th:if="${nDif == 3}">
                         <div class="defender3" th:each="element : ${defenders}"><a
                                 th:href="@{${'/stats?playerId=' + element.getId() + '&surname=' + element.getSurname() + '&role=' + element.getRole()}}"><img
                                 th:src="@{'data:image/png;base64,' + ${images.get(element.getId())}}"
                                 th:id="${element.getId()}" th:alt="${element.getSurname()}"
-                                class="img-campioncini"></a><table>
-                                <tr>
-                                    <th>Matches Played</th>
-                                    <th>Fanta Mean</th>
-                                    <th>Rating Avarage</th>
-                                    <th>Goals Conceded</th>
-                                    <th>Penalties Saved</th>
-                                    <th>Assist</th>
-                                    <th>Yellow Cards</th>
-                                    <th>Red Cards</th>
-                                    <th>Autogoals</th>
-                                    <th>Clean Sheets</th>
-                                </tr>
-                                <tr>
-                                    <td th:text="${stats.get(element.getId()).matches_played}"></td>
-                                    <td th:text="${stats.get(element.getId()).fanta_mean}"></td>
-                                    <td th:text="${stats.get(element.getId()).rating_avarage}"></td>
-                                    <td th:text="${stats.get(element.getId()).goals_conceded}"></td>
-                                    <td th:text="${stats.get(element.getId()).penalties_saved}"></td>
-                                    <td th:text="${stats.get(element.getId()).assists}"></td>
-                                    <td th:text="${stats.get(element.getId()).yellow_cards}"></td>
-                                    <td th:text="${stats.get(element.getId()).red_cards}"></td>
-                                    <td th:text="${stats.get(element.getId()).autogoals}"></td>
-                                    <td th:text="${stats.get(element.getId()).clean_sheet}"></td>
-                                </tr>
-                            </table></div>
+                                class="img-campioncini"></a>
+                            <div class="player-statistics">
+                                <table class="invisible" th:id="@{${'stats' + element.getId()}}">
+                                    <tr>
+                                        <th>Matches Played</th>
+                                        <th>Fanta Mean</th>
+                                        <th>Rating Avarage</th>
+                                        <th>Goals</th>
+                                        <th>Penalties Taken</th>
+                                    </tr>
+                                    <tr>
+                                        <td th:text="${stats.get(element.getId()).matches_played}"></td>
+                                        <td th:text="${stats.get(element.getId()).fanta_mean}"></td>
+                                        <td th:text="${stats.get(element.getId()).rating_avarage}"></td>
+                                        <td th:text="${stats.get(element.getId()).goals}"></td>
+                                        <td th:text="${stats.get(element.getId()).penalties_taken}"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Penalties Scored</th>
+                                        <th>Assist</th>
+                                        <th>Yellow Cards</th>
+                                        <th>Red Cards</th>
+                                        <th>Autogoals</th>
+                                    </tr>
+                                    <tr>
+                                        <td th:text="${stats.get(element.getId()).penalties_scored}"></td>
+                                        <td th:text="${stats.get(element.getId()).assists}"></td>
+                                        <td th:text="${stats.get(element.getId()).yellow_cards}"></td>
+                                        <td th:text="${stats.get(element.getId()).red_cards}"></td>
+                                        <td th:text="${stats.get(element.getId()).autogoals}"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            </div>
                     </div>
                     <div class="grid4" th:if="${nDif == 4}">
                         <div class="defender4-5" th:each="element : ${defenders}"><a
                                 th:href="@{${'/stats?playerId=' + element.getId() + '&surname=' + element.getSurname() + '&role=' + element.getRole()}}"><img
                                 th:src="@{'data:image/png;base64,' + ${images.get(element.getId())}}"
                                 th:id="${element.getId()}" th:alt="${element.getSurname()}"
-                                class="img-campioncini"></a><table>
+                                class="img-campioncini"></a>
+                            <div class="player-statistics">
+                            <table class="invisible" th:id="@{${'stats' + element.getId()}}">
                                 <tr>
                                     <th>Matches Played</th>
                                     <th>Fanta Mean</th>
                                     <th>Rating Avarage</th>
-                                    <th>Goals Conceded</th>
-                                    <th>Penalties Saved</th>
-                                    <th>Assist</th>
-                                    <th>Yellow Cards</th>
-                                    <th>Red Cards</th>
-                                    <th>Autogoals</th>
-                                    <th>Clean Sheets</th>
+                                    <th>Goals</th>
+                                    <th>Penalties Taken</th>
                                 </tr>
                                 <tr>
                                     <td th:text="${stats.get(element.getId()).matches_played}"></td>
                                     <td th:text="${stats.get(element.getId()).fanta_mean}"></td>
                                     <td th:text="${stats.get(element.getId()).rating_avarage}"></td>
-                                    <td th:text="${stats.get(element.getId()).goals_conceded}"></td>
-                                    <td th:text="${stats.get(element.getId()).penalties_saved}"></td>
+                                    <td th:text="${stats.get(element.getId()).goals}"></td>
+                                    <td th:text="${stats.get(element.getId()).penalties_taken}"></td>
+                                </tr>
+                                <tr>
+                                    <th>Penalties Scored</th>
+                                    <th>Assist</th>
+                                    <th>Yellow Cards</th>
+                                    <th>Red Cards</th>
+                                    <th>Autogoals</th>
+                                </tr>
+                                <tr>
+                                    <td th:text="${stats.get(element.getId()).penalties_scored}"></td>
                                     <td th:text="${stats.get(element.getId()).assists}"></td>
                                     <td th:text="${stats.get(element.getId()).yellow_cards}"></td>
                                     <td th:text="${stats.get(element.getId()).red_cards}"></td>
                                     <td th:text="${stats.get(element.getId()).autogoals}"></td>
-                                    <td th:text="${stats.get(element.getId()).clean_sheet}"></td>
                                 </tr>
-                            </table></div>
+                            </table>
+                            </div>
+                            </div>
                     </div>
                     <div class="grid5" th:if="${nDif == 5}">
                         <div class="defender4-5" th:each="element : ${defenders}"><a
                                 th:href="@{${'/stats?playerId=' + element.getId() + '&surname=' + element.getSurname() + '&role=' + element.getRole()}}"><img
                                 th:src="@{'data:image/png;base64,' + ${images.get(element.getId())}}"
                                 th:id="${element.getId()}" th:alt="${element.getSurname()}"
-                                class="img-campioncini"></a><table>
-                                <tr>
-                                    <th>Matches Played</th>
-                                    <th>Fanta Mean</th>
-                                    <th>Rating Avarage</th>
-                                    <th>Goals Conceded</th>
-                                    <th>Penalties Saved</th>
-                                    <th>Assist</th>
-                                    <th>Yellow Cards</th>
-                                    <th>Red Cards</th>
-                                    <th>Autogoals</th>
-                                    <th>Clean Sheets</th>
-                                </tr>
-                                <tr>
-                                    <td th:text="${stats.get(element.getId()).matches_played}"></td>
-                                    <td th:text="${stats.get(element.getId()).fanta_mean}"></td>
-                                    <td th:text="${stats.get(element.getId()).rating_avarage}"></td>
-                                    <td th:text="${stats.get(element.getId()).goals_conceded}"></td>
-                                    <td th:text="${stats.get(element.getId()).penalties_saved}"></td>
-                                    <td th:text="${stats.get(element.getId()).assists}"></td>
-                                    <td th:text="${stats.get(element.getId()).yellow_cards}"></td>
-                                    <td th:text="${stats.get(element.getId()).red_cards}"></td>
-                                    <td th:text="${stats.get(element.getId()).autogoals}"></td>
-                                    <td th:text="${stats.get(element.getId()).clean_sheet}"></td>
-                                </tr>
-                            </table></div>
+                                class="img-campioncini"></a>
+                            <div class="player-statistics">
+                                <table class="invisible" th:id="@{${'stats' + element.getId()}}">
+                                    <tr>
+                                        <th>Matches Played</th>
+                                        <th>Fanta Mean</th>
+                                        <th>Rating Avarage</th>
+                                        <th>Goals</th>
+                                        <th>Penalties Taken</th>
+                                    </tr>
+                                    <tr>
+                                        <td th:text="${stats.get(element.getId()).matches_played}"></td>
+                                        <td th:text="${stats.get(element.getId()).fanta_mean}"></td>
+                                        <td th:text="${stats.get(element.getId()).rating_avarage}"></td>
+                                        <td th:text="${stats.get(element.getId()).goals}"></td>
+                                        <td th:text="${stats.get(element.getId()).penalties_taken}"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Penalties Scored</th>
+                                        <th>Assist</th>
+                                        <th>Yellow Cards</th>
+                                        <th>Red Cards</th>
+                                        <th>Autogoals</th>
+                                    </tr>
+                                    <tr>
+                                        <td th:text="${stats.get(element.getId()).penalties_scored}"></td>
+                                        <td th:text="${stats.get(element.getId()).assists}"></td>
+                                        <td th:text="${stats.get(element.getId()).yellow_cards}"></td>
+                                        <td th:text="${stats.get(element.getId()).red_cards}"></td>
+                                        <td th:text="${stats.get(element.getId()).autogoals}"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            </div>
                     </div>
                     <div class="grid2-3" th:if="${nCen == 3}">
                         <div class="midfielder3" th:each="element : ${midfielders}">
@@ -172,32 +217,40 @@
                                     th:href="@{${'/stats?playerId=' + element.getId() + '&surname=' + element.getSurname() + '&role=' + element.getRole()}}">
                                 <img th:src="@{'data:image/png;base64,' + ${images.get(element.getId())}}"
                                      th:id="${element.getId()}" th:alt="${element.getSurname()}"
-                                     class="img-campioncini"></a><table>
-                                <tr>
-                                    <th>Matches Played</th>
-                                    <th>Fanta Mean</th>
-                                    <th>Rating Avarage</th>
-                                    <th>Goals Conceded</th>
-                                    <th>Penalties Saved</th>
-                                    <th>Assist</th>
-                                    <th>Yellow Cards</th>
-                                    <th>Red Cards</th>
-                                    <th>Autogoals</th>
-                                    <th>Clean Sheets</th>
-                                </tr>
-                                <tr>
-                                    <td th:text="${stats.get(element.getId()).matches_played}"></td>
-                                    <td th:text="${stats.get(element.getId()).fanta_mean}"></td>
-                                    <td th:text="${stats.get(element.getId()).rating_avarage}"></td>
-                                    <td th:text="${stats.get(element.getId()).goals_conceded}"></td>
-                                    <td th:text="${stats.get(element.getId()).penalties_saved}"></td>
-                                    <td th:text="${stats.get(element.getId()).assists}"></td>
-                                    <td th:text="${stats.get(element.getId()).yellow_cards}"></td>
-                                    <td th:text="${stats.get(element.getId()).red_cards}"></td>
-                                    <td th:text="${stats.get(element.getId()).autogoals}"></td>
-                                    <td th:text="${stats.get(element.getId()).clean_sheet}"></td>
-                                </tr>
-                            </table></div>
+                                     class="img-campioncini"></a>
+                            <div class="player-statistics">
+                                <table class="invisible" th:id="@{${'stats' + element.getId()}}">
+                                    <tr>
+                                        <th>Matches Played</th>
+                                        <th>Fanta Mean</th>
+                                        <th>Rating Avarage</th>
+                                        <th>Goals</th>
+                                        <th>Penalties Taken</th>
+                                    </tr>
+                                    <tr>
+                                        <td th:text="${stats.get(element.getId()).matches_played}"></td>
+                                        <td th:text="${stats.get(element.getId()).fanta_mean}"></td>
+                                        <td th:text="${stats.get(element.getId()).rating_avarage}"></td>
+                                        <td th:text="${stats.get(element.getId()).goals}"></td>
+                                        <td th:text="${stats.get(element.getId()).penalties_taken}"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Penalties Scored</th>
+                                        <th>Assist</th>
+                                        <th>Yellow Cards</th>
+                                        <th>Red Cards</th>
+                                        <th>Autogoals</th>
+                                    </tr>
+                                    <tr>
+                                        <td th:text="${stats.get(element.getId()).penalties_scored}"></td>
+                                        <td th:text="${stats.get(element.getId()).assists}"></td>
+                                        <td th:text="${stats.get(element.getId()).yellow_cards}"></td>
+                                        <td th:text="${stats.get(element.getId()).red_cards}"></td>
+                                        <td th:text="${stats.get(element.getId()).autogoals}"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            </div>
                     </div>
                     <div class="grid4" th:if="${nCen == 4}">
                         <div class="midfielder4-5" th:each="element : ${midfielders}">
@@ -205,165 +258,204 @@
                                     th:href="@{${'/stats?playerId=' + element.getId() + '&surname=' + element.getSurname() + '&role=' + element.getRole()}}"><img
                                     th:src="@{'data:image/png;base64,' + ${images.get(element.getId())}}"
                                     th:id="${element.getId()}" th:alt="${element.getSurname()}"
-                                    class="img-campioncini"></a><table>
-                                <tr>
-                                    <th>Matches Played</th>
-                                    <th>Fanta Mean</th>
-                                    <th>Rating Avarage</th>
-                                    <th>Goals Conceded</th>
-                                    <th>Penalties Saved</th>
-                                    <th>Assist</th>
-                                    <th>Yellow Cards</th>
-                                    <th>Red Cards</th>
-                                    <th>Autogoals</th>
-                                    <th>Clean Sheets</th>
-                                </tr>
-                                <tr>
-                                    <td th:text="${stats.get(element.getId()).matches_played}"></td>
-                                    <td th:text="${stats.get(element.getId()).fanta_mean}"></td>
-                                    <td th:text="${stats.get(element.getId()).rating_avarage}"></td>
-                                    <td th:text="${stats.get(element.getId()).goals_conceded}"></td>
-                                    <td th:text="${stats.get(element.getId()).penalties_saved}"></td>
-                                    <td th:text="${stats.get(element.getId()).assists}"></td>
-                                    <td th:text="${stats.get(element.getId()).yellow_cards}"></td>
-                                    <td th:text="${stats.get(element.getId()).red_cards}"></td>
-                                    <td th:text="${stats.get(element.getId()).autogoals}"></td>
-                                    <td th:text="${stats.get(element.getId()).clean_sheet}"></td>
-                                </tr>
-                            </table></div>
+                                    class="img-campioncini"></a>
+                            <div class="player-statistics">
+                                <table class="invisible" th:id="@{${'stats' + element.getId()}}">
+                                    <tr>
+                                        <th>Matches Played</th>
+                                        <th>Fanta Mean</th>
+                                        <th>Rating Avarage</th>
+                                        <th>Goals</th>
+                                        <th>Penalties Taken</th>
+                                    </tr>
+                                    <tr>
+                                        <td th:text="${stats.get(element.getId()).matches_played}"></td>
+                                        <td th:text="${stats.get(element.getId()).fanta_mean}"></td>
+                                        <td th:text="${stats.get(element.getId()).rating_avarage}"></td>
+                                        <td th:text="${stats.get(element.getId()).goals}"></td>
+                                        <td th:text="${stats.get(element.getId()).penalties_taken}"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Penalties Scored</th>
+                                        <th>Assist</th>
+                                        <th>Yellow Cards</th>
+                                        <th>Red Cards</th>
+                                        <th>Autogoals</th>
+                                    </tr>
+                                    <tr>
+                                        <td th:text="${stats.get(element.getId()).penalties_scored}"></td>
+                                        <td th:text="${stats.get(element.getId()).assists}"></td>
+                                        <td th:text="${stats.get(element.getId()).yellow_cards}"></td>
+                                        <td th:text="${stats.get(element.getId()).red_cards}"></td>
+                                        <td th:text="${stats.get(element.getId()).autogoals}"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            </div>
                     </div>
                     <div class="grid5" th:if="${nCen == 5}">
                         <div class="midfielder4-5" th:each="element : ${midfielders}"><a
                                 th:href="@{${'/stats?playerId=' + element.getId() + '&surname=' + element.getSurname() + '&role=' + element.getRole()}}"><img
                                 th:src="@{'data:image/png;base64,' + ${images.get(element.getId())}}"
                                 th:id="${element.getId()}" th:alt="${element.getSurname()}"
-                                class="img-campioncini"></a><table>
-                                <tr>
-                                    <th>Matches Played</th>
-                                    <th>Fanta Mean</th>
-                                    <th>Rating Avarage</th>
-                                    <th>Goals Conceded</th>
-                                    <th>Penalties Saved</th>
-                                    <th>Assist</th>
-                                    <th>Yellow Cards</th>
-                                    <th>Red Cards</th>
-                                    <th>Autogoals</th>
-                                    <th>Clean Sheets</th>
-                                </tr>
-                                <tr>
-                                    <td th:text="${stats.get(element.getId()).matches_played}"></td>
-                                    <td th:text="${stats.get(element.getId()).fanta_mean}"></td>
-                                    <td th:text="${stats.get(element.getId()).rating_avarage}"></td>
-                                    <td th:text="${stats.get(element.getId()).goals_conceded}"></td>
-                                    <td th:text="${stats.get(element.getId()).penalties_saved}"></td>
-                                    <td th:text="${stats.get(element.getId()).assists}"></td>
-                                    <td th:text="${stats.get(element.getId()).yellow_cards}"></td>
-                                    <td th:text="${stats.get(element.getId()).red_cards}"></td>
-                                    <td th:text="${stats.get(element.getId()).autogoals}"></td>
-                                    <td th:text="${stats.get(element.getId()).clean_sheet}"></td>
-                                </tr>
-                            </table></div>
+                                class="img-campioncini"></a>
+                            <div class="player-statistics">
+                                <table class="invisible" th:id="@{${'stats' + element.getId()}}">
+                                    <tr>
+                                        <th>Matches Played</th>
+                                        <th>Fanta Mean</th>
+                                        <th>Rating Avarage</th>
+                                        <th>Goals</th>
+                                        <th>Penalties Taken</th>
+                                    </tr>
+                                    <tr>
+                                        <td th:text="${stats.get(element.getId()).matches_played}"></td>
+                                        <td th:text="${stats.get(element.getId()).fanta_mean}"></td>
+                                        <td th:text="${stats.get(element.getId()).rating_avarage}"></td>
+                                        <td th:text="${stats.get(element.getId()).goals}"></td>
+                                        <td th:text="${stats.get(element.getId()).penalties_taken}"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Penalties Scored</th>
+                                        <th>Assist</th>
+                                        <th>Yellow Cards</th>
+                                        <th>Red Cards</th>
+                                        <th>Autogoals</th>
+                                    </tr>
+                                    <tr>
+                                        <td th:text="${stats.get(element.getId()).penalties_scored}"></td>
+                                        <td th:text="${stats.get(element.getId()).assists}"></td>
+                                        <td th:text="${stats.get(element.getId()).yellow_cards}"></td>
+                                        <td th:text="${stats.get(element.getId()).red_cards}"></td>
+                                        <td th:text="${stats.get(element.getId()).autogoals}"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            </div>
                     </div>
                     <div class="grid1" th:if="${nAtt == 1}">
                         <div class="striker1" th:each="element : ${strikers}"><a
                                 th:href="@{${'/stats?playerId=' + element.getId() + '&surname=' + element.getSurname() + '&role=' + element.getRole()}}"><img
                                 th:src="@{'data:image/png;base64,' + ${images.get(element.getId())}}"
                                 th:id="${element.getId()}" th:alt="${element.getSurname()}"
-                                class="img-campioncini"></a><table>
-                                <tr>
-                                    <th>Matches Played</th>
-                                    <th>Fanta Mean</th>
-                                    <th>Rating Avarage</th>
-                                    <th>Goals Conceded</th>
-                                    <th>Penalties Saved</th>
-                                    <th>Assist</th>
-                                    <th>Yellow Cards</th>
-                                    <th>Red Cards</th>
-                                    <th>Autogoals</th>
-                                    <th>Clean Sheets</th>
-                                </tr>
-                                <tr>
-                                    <td th:text="${stats.get(element.getId()).matches_played}"></td>
-                                    <td th:text="${stats.get(element.getId()).fanta_mean}"></td>
-                                    <td th:text="${stats.get(element.getId()).rating_avarage}"></td>
-                                    <td th:text="${stats.get(element.getId()).goals_conceded}"></td>
-                                    <td th:text="${stats.get(element.getId()).penalties_saved}"></td>
-                                    <td th:text="${stats.get(element.getId()).assists}"></td>
-                                    <td th:text="${stats.get(element.getId()).yellow_cards}"></td>
-                                    <td th:text="${stats.get(element.getId()).red_cards}"></td>
-                                    <td th:text="${stats.get(element.getId()).autogoals}"></td>
-                                    <td th:text="${stats.get(element.getId()).clean_sheet}"></td>
-                                </tr>
-                            </table></div>
+                                class="img-campioncini"></a>
+                            <div class="player-statistics">
+                                <table class="invisible" th:id="@{${'stats' + element.getId()}}">
+                                    <tr>
+                                        <th>Matches Played</th>
+                                        <th>Fanta Mean</th>
+                                        <th>Rating Avarage</th>
+                                        <th>Goals</th>
+                                        <th>Penalties Taken</th>
+                                    </tr>
+                                    <tr>
+                                        <td th:text="${stats.get(element.getId()).matches_played}"></td>
+                                        <td th:text="${stats.get(element.getId()).fanta_mean}"></td>
+                                        <td th:text="${stats.get(element.getId()).rating_avarage}"></td>
+                                        <td th:text="${stats.get(element.getId()).goals}"></td>
+                                        <td th:text="${stats.get(element.getId()).penalties_taken}"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Penalties Scored</th>
+                                        <th>Assist</th>
+                                        <th>Yellow Cards</th>
+                                        <th>Red Cards</th>
+                                        <th>Autogoals</th>
+                                    </tr>
+                                    <tr>
+                                        <td th:text="${stats.get(element.getId()).penalties_scored}"></td>
+                                        <td th:text="${stats.get(element.getId()).assists}"></td>
+                                        <td th:text="${stats.get(element.getId()).yellow_cards}"></td>
+                                        <td th:text="${stats.get(element.getId()).red_cards}"></td>
+                                        <td th:text="${stats.get(element.getId()).autogoals}"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            </div>
                     </div>
                     <div class="grid2-3" th:if="${nAtt == 2}">
                         <div class="striker2" th:each="element : ${strikers}"><a
                                 th:href="@{${'/stats?playerId=' + element.getId() + '&surname=' + element.getSurname() + '&role=' + element.getRole()}}"><img
                                 th:src="@{'data:image/png;base64,' + ${images.get(element.getId())}}"
                                 th:id="${element.getId()}" th:alt="${element.getSurname()}"
-                                class="img-campioncini"></a><table>
-                                <tr>
-                                    <th>Matches Played</th>
-                                    <th>Fanta Mean</th>
-                                    <th>Rating Avarage</th>
-                                    <th>Goals Conceded</th>
-                                    <th>Penalties Saved</th>
-                                    <th>Assist</th>
-                                    <th>Yellow Cards</th>
-                                    <th>Red Cards</th>
-                                    <th>Autogoals</th>
-                                    <th>Clean Sheets</th>
-                                </tr>
-                                <tr>
-                                    <td th:text="${stats.get(element.getId()).matches_played}"></td>
-                                    <td th:text="${stats.get(element.getId()).fanta_mean}"></td>
-                                    <td th:text="${stats.get(element.getId()).rating_avarage}"></td>
-                                    <td th:text="${stats.get(element.getId()).goals_conceded}"></td>
-                                    <td th:text="${stats.get(element.getId()).penalties_saved}"></td>
-                                    <td th:text="${stats.get(element.getId()).assists}"></td>
-                                    <td th:text="${stats.get(element.getId()).yellow_cards}"></td>
-                                    <td th:text="${stats.get(element.getId()).red_cards}"></td>
-                                    <td th:text="${stats.get(element.getId()).autogoals}"></td>
-                                    <td th:text="${stats.get(element.getId()).clean_sheet}"></td>
-                                </tr>
-                            </table></div>
+                                class="img-campioncini"></a>
+                            <div class="player-statistics">
+                                <table class="invisible" th:id="@{${'stats' + element.getId()}}">
+                                    <tr>
+                                        <th>Matches Played</th>
+                                        <th>Fanta Mean</th>
+                                        <th>Rating Avarage</th>
+                                        <th>Goals</th>
+                                        <th>Penalties Taken</th>
+                                    </tr>
+                                    <tr>
+                                        <td th:text="${stats.get(element.getId()).matches_played}"></td>
+                                        <td th:text="${stats.get(element.getId()).fanta_mean}"></td>
+                                        <td th:text="${stats.get(element.getId()).rating_avarage}"></td>
+                                        <td th:text="${stats.get(element.getId()).goals}"></td>
+                                        <td th:text="${stats.get(element.getId()).penalties_taken}"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Penalties Scored</th>
+                                        <th>Assist</th>
+                                        <th>Yellow Cards</th>
+                                        <th>Red Cards</th>
+                                        <th>Autogoals</th>
+                                    </tr>
+                                    <tr>
+                                        <td th:text="${stats.get(element.getId()).penalties_scored}"></td>
+                                        <td th:text="${stats.get(element.getId()).assists}"></td>
+                                        <td th:text="${stats.get(element.getId()).yellow_cards}"></td>
+                                        <td th:text="${stats.get(element.getId()).red_cards}"></td>
+                                        <td th:text="${stats.get(element.getId()).autogoals}"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            </div>
                     </div>
                     <div class="grid2-3" th:if="${nAtt == 3}">
                         <div class="striker3" th:each="element : ${strikers}"><a
                                 th:href="@{${'/stats?playerId=' + element.getId() + '&surname=' + element.getSurname() + '&role=' + element.getRole()}}"><img
                                 th:src="@{'data:image/png;base64,' + ${images.get(element.getId())}}"
                                 th:id="${element.getId()}" th:alt="${element.getSurname()}"
-                                class="img-campioncini"></a><table>
-                                <tr>
-                                    <th>Matches Played</th>
-                                    <th>Fanta Mean</th>
-                                    <th>Rating Avarage</th>
-                                    <th>Goals Conceded</th>
-                                    <th>Penalties Saved</th>
-                                    <th>Assist</th>
-                                    <th>Yellow Cards</th>
-                                    <th>Red Cards</th>
-                                    <th>Autogoals</th>
-                                    <th>Clean Sheets</th>
-                                </tr>
-                                <tr>
-                                    <td th:text="${stats.get(element.getId()).matches_played}"></td>
-                                    <td th:text="${stats.get(element.getId()).fanta_mean}"></td>
-                                    <td th:text="${stats.get(element.getId()).rating_avarage}"></td>
-                                    <td th:text="${stats.get(element.getId()).goals_conceded}"></td>
-                                    <td th:text="${stats.get(element.getId()).penalties_saved}"></td>
-                                    <td th:text="${stats.get(element.getId()).assists}"></td>
-                                    <td th:text="${stats.get(element.getId()).yellow_cards}"></td>
-                                    <td th:text="${stats.get(element.getId()).red_cards}"></td>
-                                    <td th:text="${stats.get(element.getId()).autogoals}"></td>
-                                    <td th:text="${stats.get(element.getId()).clean_sheet}"></td>
-                                </tr>
-                            </table></div>
+                                class="img-campioncini"></a>
+                            <div class="player-statistics">
+                                <table class="invisible" th:id="@{${'stats' + element.getId()}}">
+                                    <tr>
+                                        <th>Matches Played</th>
+                                        <th>Fanta Mean</th>
+                                        <th>Rating Avarage</th>
+                                        <th>Goals</th>
+                                        <th>Penalties Taken</th>
+                                    </tr>
+                                    <tr>
+                                        <td th:text="${stats.get(element.getId()).matches_played}"></td>
+                                        <td th:text="${stats.get(element.getId()).fanta_mean}"></td>
+                                        <td th:text="${stats.get(element.getId()).rating_avarage}"></td>
+                                        <td th:text="${stats.get(element.getId()).goals}"></td>
+                                        <td th:text="${stats.get(element.getId()).penalties_taken}"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Penalties Scored</th>
+                                        <th>Assist</th>
+                                        <th>Yellow Cards</th>
+                                        <th>Red Cards</th>
+                                        <th>Autogoals</th>
+                                    </tr>
+                                    <tr>
+                                        <td th:text="${stats.get(element.getId()).penalties_scored}"></td>
+                                        <td th:text="${stats.get(element.getId()).assists}"></td>
+                                        <td th:text="${stats.get(element.getId()).yellow_cards}"></td>
+                                        <td th:text="${stats.get(element.getId()).red_cards}"></td>
+                                        <td th:text="${stats.get(element.getId()).autogoals}"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            </div>
                     </div>
                 </div>
-                </p>
                 <p><a class="read_more" th:href="@{/}">Go back to the home</a></p>
-                </p>
+            </div>
             </div>
         </div>
     </div>
