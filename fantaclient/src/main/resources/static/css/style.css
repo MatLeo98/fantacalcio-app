@@ -454,6 +454,7 @@ ul.email li a {
      border-radius: 50px;
      transition: ease-in all 0.5s;
      margin-top: 40px;
+     cursor: pointer;
 }
 
 .read_more:hover {
@@ -984,6 +985,12 @@ select {
      margin-top: 20px;
 }
 
+.sfondo .player-statistics {
+     margin-top: 20px;
+     position: absolute;
+     z-index: 9999;
+}
+
 .player-statistics h3 {
      font-size: 20px;
      margin-bottom: 10px;
@@ -1007,13 +1014,15 @@ select {
      background-color: #26cc35;
 }
 
+.sfondo .player-statistics th {
+     background-color: lightblue !important;
+}
+
 .player-statistics tr:nth-child(even) {
      background-color: #f9f9f9;
 }
 
-.player-statistics tr:hover {
-     background-color: #eaeaea;
-}
+
 
 
 /** end contact section **/
