@@ -1,5 +1,6 @@
 package it.disim.univaq.fantacalcio.controller;
 
+import feign.FeignException;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import it.disim.univaq.fantacalcio.feignclient.CampionciniFeignClient;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.Base64;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 
 
@@ -50,13 +52,16 @@ public class ProsumerController {
     
     @GetMapping("/{playerName}")
     @Operation(summary = "Get the 'Campioncino' for the desired player")
-    @Async
-    public CompletableFuture<String> getCampioncino(@Parameter(description = "The name of the player in order to retrieve the 'Campioncino'") @PathVariable("playerName") String playerName) {
+    public String getCampioncino(@Parameter(description = "The name of the player in order to retrieve the 'Campioncino'") @PathVariable("playerName") String playerName) {
         System.out.println("\t\t [Prosumer-2] - getCampioncino() invoked" + " on port " + portNumber);
-        var campioncino = campionciniFeignClient.getCampioncino(playerName.toUpperCase()
-                .replace(" ", "-")
-                .replace("'", "")
-                .replace(".", ""));
-        return CompletableFuture.completedFuture(Base64.getEncoder().encodeToString(campioncino));
+        try {
+            var campioncino = campionciniFeignClient.getCampioncino(playerName.toUpperCase()
+                    .replace(" ", "-")
+                    .replace("'", "")
+                    .replace(".", ""));
+            return Base64.getEncoder().encodeToString(campioncino);
+        } catch (FeignException feignException) {
+            return Base64.getEncoder().encodeToString(campionciniFeignClient.getCampioncino("NO-CAMPIONCINO"));
+        }
     }
 }
