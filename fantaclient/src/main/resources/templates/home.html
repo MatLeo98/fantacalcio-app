@@ -18,12 +18,27 @@
          // Gestisci l'evento di cambio selezione nel dropdown menu
          $('#moduloSelect').change(function() {
             var selectedModulo = $(this).val();
-            if(selectedModulo !== "") {
+            var criteria = $('#criteria').val();
+            if(selectedModulo == "") {
+               $('.read_more').addClass('disable-button');
+            }
+            else {
                $('.read_more').removeClass('disable-button');
+            }
+            if(selectedModulo !== "" && criteria == "") {
                var url = '/best-formation?formationDesired=' + selectedModulo;
                $('.read_more').attr('href', url);
             } else {
-               $('.read_more').addClass('disable-button');
+               if(criteria == "rating") {
+                  var url = '/best-formation?formationDesired=' + selectedModulo + '&criteria=rating';
+               } else if(criteria == "matchesPlayed") {
+                  var url = '/best-formation?formationDesired=' + selectedModulo + '&criteria=matchesPlayed';
+               } else if(criteria == "nation") {
+                  $('#nationality').removeClass('invisible');
+               } else if(criteria == "age") {
+                  $('#age').removeClass('invisible');
+               }
+               $('.read_more').attr('href', url);
             }
          });
 
