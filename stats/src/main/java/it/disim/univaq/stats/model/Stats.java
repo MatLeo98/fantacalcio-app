@@ -60,10 +60,6 @@ public class Stats extends DateAudit{
 	@Column(name = "playerId", nullable = false)
 	private Long playerId;
 
-/*	@OneToOne
-	@JoinColumn(name="PLAYER_FK")
-	private Long playerId;*/
-
 	public Long getId() {
 		return id;
 	}
@@ -151,14 +147,6 @@ public class Stats extends DateAudit{
 	public void setPlayerId(Long playerId) {
 		this.playerId = playerId;
 	}
-
-	/*public Player getPlayer() {
-		return player;
-	}
-
-	public void setPlayer(Player player) {
-		this.player = player;
-	}*/
 
 	public Integer getPenalties_saved() {
 		return penalties_saved;

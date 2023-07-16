@@ -60,7 +60,6 @@ public class StatsController {
 		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 	}
 
-	//FORSE SI PUò TOGLIERE PERCHé NON HA SENSO ELIMINARE UNICAMENTE LE STATISTICHE, ANDREBBERO ELIMINATE CASCADE CON IL PLAYER
 	@DeleteMapping("/id/{id}")
 	public ResponseEntity<Void> deleteStatistics(@PathVariable("id") Long id) {
 		System.out.println(portNumber);
