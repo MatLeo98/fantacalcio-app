@@ -55,7 +55,7 @@
                                 th:id="${element.getId()}" th:alt="${element.getSurname()}"
                                 class="img-campioncini"></a>
                             <div class="player-statistics">
-                                <table class="invisible" id="stats2">
+                                <table class="invisible" th:id="@{${'stats' + element.getId()}}">
                                     <tbody>
                                         <tr>
                                             <th>Matches Played</th>
